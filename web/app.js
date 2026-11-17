@@ -263,7 +263,7 @@ function tabCharts() {
     html += `<div class="panel chart-card"><img class="${state.verticalCharts ? "vertical" : ""}" loading="lazy" src="${base}${esc(chart.files[size])}" alt="Chart ${chart.n}: ${esc(chart.title)}">
       <h3>Chart ${chart.n}: ${esc(chart.title)}</h3>
       ${chart.teaches ? `<p class="small">${esc(chart.teaches)}</p>` : ""}
-      <p class="small sub">Data through ${esc(chart.data_through)}. Sources: ${chart.series.map((s) => link(s.source_url, s.source_name)).join("; ")}</p>
+      <p class="small sub">Data through ${esc(chart.data_through)}. Sources: ${chart.series.map((s) => link(s.source_url, `${s.title}, ${s.source_name}`)).join("; ")}</p>
       <div class="row"><a class="btn small" href="${base}${esc(chart.files["1920x1080"])}?download=1">Download 1920x1080</a>
       <a class="btn small" href="${base}${esc(chart.files["1080x1920"])}?download=1">Download 1080x1920</a></div></div>`;
   }

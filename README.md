@@ -164,7 +164,7 @@ projects/2026-11-17_mortgage-rates-back-above-7/
 python -m pytest
 ```
 
-112 tests, none of which use the network. They cover the data-fetch functions (parsing,
+116 tests, none of which use the network. They cover the data-fetch functions (parsing,
 key and no-key paths, fallbacks, error handling), chart rendering (exact pixel sizes, both
 orientations, every chart kind), the number guard, compliance rules, the clip planner, the
 full pipeline and the web API.

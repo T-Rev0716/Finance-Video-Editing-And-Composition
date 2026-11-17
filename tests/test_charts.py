@@ -102,3 +102,10 @@ def test_credit_line_merges_fred_agencies():
     b = make_series()
     b.source_name = "FRED (Freddie Mac)"
     assert charts._credit({"series": [a, b]}) == "Source: FRED (Test Agency; Freddie Mac)"
+
+
+@pytest.mark.parametrize("step,expected", [(1.0, 0), (0.5, 1), (0.25, 2), (20.0, 0)])
+def test_tick_labels_get_enough_decimals_to_stay_distinct(step, expected):
+    assert charts._step_decimals(step) == expected
+    labels = {charts._tick_formatter("percent", 4.0, step)(i * step, None) for i in range(6)}
+    assert len(labels) == 6

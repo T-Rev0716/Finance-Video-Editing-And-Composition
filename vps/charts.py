@@ -70,29 +70,39 @@ def fmt_compact(value: float, units: str, decimals: int = 2, signed: bool = Fals
     return f"{sign}{value:,.{decimals}f}"
 
 
-def _tick_formatter(units: str, span: float):
-    decimals = 0 if span >= 4 else (1 if span >= 0.8 else 2)
+def _step_decimals(step: float) -> int:
+    """Decimals needed so neighbouring tick labels never round to the same text."""
+    for decimals in (0, 1, 2):
+        if abs(step * 10 ** decimals - round(step * 10 ** decimals)) < 1e-6:
+            return decimals
+    return 3
+
+
+def _tick_formatter(units: str, span: float, step: float):
+    decimals = _step_decimals(step)
 
     def _format(value, _pos):
         if abs(value) < 1e-12 and units not in ("percent", "percentage_points"):
             return "0"
-        if units in ("percent", "percentage_points"):
+        if units == "percent":
             return f"{value:.{decimals}f}%"
+        if units == "percentage_points":
+            return f"{value:.{decimals}f}"
         if units == "usd":
             if abs(value) >= 10000:
-                return f"${value / 1000:,.0f}K"
-            return f"${value:,.{decimals if span < 20 else 0}f}"
+                return f"${value / 1000:,.{_step_decimals(step / 1000)}f}K"
+            return f"${value:,.{decimals}f}"
         if units == "usd_trillions":
-            return f"${value:,.{0 if span >= 4 else 1}f}T"
+            return f"${value:,.{decimals}f}T"
         if units == "usd_billions":
-            return f"${value / 1000:,.1f}T" if span >= 2000 else f"${value:,.0f}B"
+            return f"${value / 1000:,.{_step_decimals(step / 1000)}f}T" if span >= 2000 else f"${value:,.{decimals}f}B"
         if units == "usd_millions":
-            return f"${value / 1e6:,.1f}T"
+            return f"${value / 1e6:,.{_step_decimals(step / 1e6)}f}T"
         if units == "thousands":
-            return f"{value / 1000:,.0f}M" if span >= 4000 else f"{value:,.0f}K"
+            return f"{value / 1000:,.{_step_decimals(step / 1000)}f}M" if span >= 4000 else f"{value:,.{decimals}f}K"
         if units == "count":
-            return f"{value / 1000:,.0f}K" if abs(value) >= 10000 else f"{value:,.0f}"
-        return f"{value:,.{0 if span >= 8 else 1}f}"
+            return f"{value / 1000:,.{_step_decimals(step / 1000)}f}K" if abs(value) >= 10000 else f"{value:,.{decimals}f}"
+        return f"{value:,.{decimals}f}"
 
     return FuncFormatter(_format)
 
@@ -230,7 +240,9 @@ def _draw(chart: dict, size_name: str, theme_name: str, path: Path) -> None:
         ax.xaxis.set_major_locator(mdates.AutoDateLocator(minticks=3, maxticks=L["max_xticks"]))
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
     ax.yaxis.set_major_locator(MaxNLocator(nbins=6, min_n_ticks=4))
-    ax.yaxis.set_major_formatter(_tick_formatter(units, hi - lo))
+    ticks = ax.get_yticks()
+    step = float(ticks[1] - ticks[0]) if len(ticks) > 1 else float(hi - lo)
+    ax.yaxis.set_major_formatter(_tick_formatter(units, hi - lo, step))
     ax.tick_params(axis="both", colors=T["ink2"], labelsize=L["tick_size"], length=0, pad=12)
     ax.grid(axis="y", color=T["grid"], lw=1.2, zorder=0)
     ax.set_axisbelow(True)
