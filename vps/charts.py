@@ -23,9 +23,11 @@ from .sources.models import Series  # noqa: E402
 # Colours validated for colour-blind separation on each background (blue, orange, green).
 THEMES = {
     "dark": {"bg": "#1a1a19", "ink": "#f0efec", "ink2": "#c3c2b7", "muted": "#898781",
-             "grid": "#2c2c2a", "axis": "#4a4a46", "series": ["#3987e5", "#d95926", "#199e70"]},
+             "grid": "#2c2c2a", "axis": "#4a4a46", "series": ["#3987e5", "#d95926", "#199e70"],
+             "accent": "#fab219"},
     "light": {"bg": "#fcfcfb", "ink": "#0b0b0b", "ink2": "#52514e", "muted": "#74726c",
-              "grid": "#e1e0d9", "axis": "#c3c2b7", "series": ["#2a78d6", "#eb6834", "#1baf7a"]},
+              "grid": "#e1e0d9", "axis": "#c3c2b7", "series": ["#2a78d6", "#eb6834", "#1baf7a"],
+              "accent": "#b3261e"},
 }
 
 SIZES = {
@@ -162,7 +164,14 @@ def _spread_labels(positions: list[float], min_gap: float) -> list[float]:
     return placed
 
 
-def _draw(chart: dict, size_name: str, theme_name: str, path: Path) -> None:
+def _draw(chart: dict, size_name: str, theme_name: str, path: Path | None, *,
+          show_marks: bool = True, show_end_labels: bool = True) -> dict:
+    """Draw one chart. With path=None the picture is returned in memory instead of saved.
+
+    Returns layout facts used by the animation builder: the plot area in image pixels,
+    each series' points in image pixels, and (when path is None) the image itself.
+    show_marks=False draws the identical chart - same axes, same scale - without the data.
+    """
     width, height, L = SIZES[size_name]
     T = THEMES.get(theme_name, THEMES["dark"])
     series_list: list[Series] = chart["series"]
@@ -207,15 +216,16 @@ def _draw(chart: dict, size_name: str, theme_name: str, path: Path) -> None:
         s = series_list[0]
         gaps = [(b - a).days for a, b in zip(s.dates, s.dates[1:])] or [30]
         bar_width = sorted(gaps)[len(gaps) // 2] * 0.68
-        ax.bar(s.dates, s.values, width=bar_width, color=T["series"][0], linewidth=0, zorder=3)
+        marks = list(ax.bar(s.dates, s.values, width=bar_width, color=T["series"][0], linewidth=0, zorder=3))
         ax.axhline(0, color=T["axis"], lw=1.6, zorder=2)
     else:
+        marks = []
         for i, s in enumerate(series_list):
             lw = L["lw"] if len(s) < 1500 else L["lw"] - 0.8
             marker = "o" if len(s) <= 14 else None
-            ax.plot(s.dates, s.values, color=T["series"][i], lw=lw, solid_capstyle="round",
-                    solid_joinstyle="round", zorder=3 + i, marker=marker, markersize=9,
-                    markeredgecolor=T["bg"], markeredgewidth=2)
+            marks += ax.plot(s.dates, s.values, color=T["series"][i], lw=lw, solid_capstyle="round",
+                             solid_joinstyle="round", zorder=3 + i, marker=marker, markersize=9,
+                             markeredgecolor=T["bg"], markeredgewidth=2)
 
     for start, end in chart.get("recessions", []):
         ax.axvspan(start, end, color=T["ink"], alpha=0.09, lw=0, zorder=1)
@@ -256,9 +266,21 @@ def _draw(chart: dict, size_name: str, theme_name: str, path: Path) -> None:
                     xytext=(0, 8), textcoords="offset points", color=T["ink2"], fontsize=L["sub_size"] - 3,
                     va="bottom", ha="left")
 
+    # The scale is now final. Nothing below may change it.
+    xlim, ylim = ax.get_xlim(), ax.get_ylim()
+    if not show_marks:
+        for mark in marks:
+            mark.set_visible(False)
+
+    highlight = chart.get("highlight")
+    if highlight and show_marks:
+        _draw_highlight(ax, highlight, T, L, xlim, ylim)
+        ax.set_xlim(xlim)
+        ax.set_ylim(ylim)
+
     # --- end labels: the latest value of each series, in text colour, beside a dot in the series colour
     lo, hi = ax.get_ylim()
-    ends = [(s.dates[-1], s.values[-1]) for s in series_list]
+    ends = [(s.dates[-1], s.values[-1]) for s in series_list] if show_marks and show_end_labels else []
     fractions = [(v - lo) / (hi - lo) for _, v in ends]
     label_height_px = L["label_size"] * DPI / 72 * 1.35
     axes_height_px = (plot_top - L["bottom"]) * height
@@ -291,9 +313,73 @@ def _draw(chart: dict, size_name: str, theme_name: str, path: Path) -> None:
                  fontsize=L["foot_size"], va="center", ha="left")
         fig.text(0.95, L["foot_y"], through, color=T["muted"], fontsize=L["foot_size"], va="center", ha="right")
 
-    path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(path, dpi=DPI, facecolor=T["bg"])  # no bbox_inches: keeps the exact pixel size
+    fig.canvas.draw()
+    box = ax.get_window_extent()  # display pixels, origin bottom-left
+    info = {
+        "width": width, "height": height,
+        "axes_px": (int(round(box.x0)), int(round(height - box.y1)), int(round(box.x1)), int(round(height - box.y0))),
+        "series_px": [],
+    }
+    for series in series_list:
+        points = ax.transData.transform(list(zip(mdates.date2num(series.dates), series.values)))
+        info["series_px"].append([(float(x), float(height - y)) for x, y in points])
+    if path is None:
+        from PIL import Image
+        info["image"] = Image.frombuffer("RGBA", (width, height), bytes(fig.canvas.buffer_rgba())).convert("RGB")
+    else:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(path, dpi=DPI, facecolor=T["bg"])  # no bbox_inches: keeps the exact pixel size
     plt.close(fig)
+    return info
+
+
+def _draw_highlight(ax, highlight: dict, T: dict, L: dict, xlim, ylim) -> None:
+    """A vertical event line, a ring on the data point and an arrowed callout box.
+    Positioned in axes space so it cannot move or rescale either axis."""
+    x = mdates.date2num(highlight["date"])
+    value = highlight["value"]
+    x_frac = (x - xlim[0]) / (xlim[1] - xlim[0])
+    y_frac = (value - ylim[0]) / (ylim[1] - ylim[0])
+    accent = T["accent"]
+    ax.axvline(x, color=accent, lw=3.2, zorder=8)
+    ax.plot([x], [value], marker="o", markersize=20, color=accent, markeredgecolor=T["bg"],
+            markeredgewidth=3, zorder=12)
+    box_x = x_frac - 0.07 if x_frac > 0.5 else x_frac + 0.07
+    box_y = 0.20 if y_frac > 0.62 else 0.88
+    ax.annotate(
+        "\n".join(highlight["label_lines"]), xy=(x, value), xycoords="data",
+        xytext=(box_x, box_y), textcoords="axes fraction",
+        ha="right" if x_frac > 0.5 else "left", va="center", multialignment="left",
+        color=T["ink"], fontsize=L["sub_size"] + 2, fontweight="bold", linespacing=1.35, zorder=13,
+        bbox={"boxstyle": "round,pad=0.55", "fc": T["bg"], "ec": accent, "lw": 2.8},
+        arrowprops={"arrowstyle": "-|>", "color": accent, "lw": 3.2, "mutation_scale": 30,
+                    "shrinkA": 6, "shrinkB": 14, "connectionstyle": "arc3,rad=0.15"},
+    )
+
+
+def chart_to_spec(chart: dict) -> dict:
+    """A chart as plain JSON: exactly the observations that were drawn, with their sources.
+    Saved next to the PNGs so graphics and thumbnails reuse the same numbers."""
+    return {
+        "id": chart["id"], "kind": chart["kind"], "title": chart["title"], "units": chart["units"],
+        "decimals": chart.get("decimals", 2), "target": chart.get("target"),
+        "target_label": chart.get("target_label"), "zero_line": bool(chart.get("zero_line")),
+        "recessions": [[a.isoformat(), b.isoformat()] for a, b in chart.get("recessions", [])],
+        "series": [{"id": s.id, "title": s.title, "units": s.units, "frequency": s.frequency,
+                    "source_name": s.source_name, "source_url": s.source_url,
+                    "dates": [d.isoformat() for d in s.dates], "values": list(s.values)} for s in chart["series"]],
+    }
+
+
+def chart_from_spec(spec: dict) -> dict:
+    """The reverse of chart_to_spec."""
+    from datetime import date as _date
+    chart = {k: spec.get(k) for k in ("id", "kind", "title", "units", "decimals", "target", "target_label", "zero_line")}
+    chart["recessions"] = [(_date.fromisoformat(a), _date.fromisoformat(b)) for a, b in spec.get("recessions", [])]
+    chart["series"] = [Series(s["id"], s["title"], s.get("units", ""), [_date.fromisoformat(d) for d in s["dates"]],
+                              list(s["values"]), s["source_name"], s["source_url"], s.get("frequency", ""))
+                       for s in spec["series"]]
+    return chart
 
 
 def render_chart(chart: dict, out_dir: Path, number: int, theme: str = "dark") -> dict[str, str]:

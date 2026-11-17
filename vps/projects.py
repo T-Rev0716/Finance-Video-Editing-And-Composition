@@ -11,6 +11,9 @@ from pathlib import Path
 from . import config, exports
 
 
+ZIP_SKIP = {"recording", "staging"}
+
+
 def slugify(text: str, limit: int = 48) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
     return slug[:limit].rstrip("-") or "topic"
@@ -100,6 +103,9 @@ def zip_bytes(project_id: str) -> bytes:
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(folder.rglob("*")):
+            top = path.relative_to(folder).parts[0]
+            if top in ZIP_SKIP:  # raw recordings can be many GB; staging is a scratch area
+                continue
             if path.is_file() and not path.name.endswith(".tmp"):
                 archive.write(path, f"{folder.name}/{path.relative_to(folder).as_posix()}")
     return buffer.getvalue()

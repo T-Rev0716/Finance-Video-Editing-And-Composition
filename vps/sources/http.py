@@ -1,6 +1,7 @@
 """One place for outbound HTTP: retries, a short on-disk cache, clear errors."""
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import json
 import os
@@ -26,6 +27,19 @@ def cache_ttl() -> float:
 
 
 _session = requests.Session()
+_fresh_depth = 0
+
+
+@contextlib.contextmanager
+def fresh():
+    """Inside this block, ignore saved responses and ask each source again
+    (used when checking whether numbers changed since recording)."""
+    global _fresh_depth
+    _fresh_depth += 1
+    try:
+        yield
+    finally:
+        _fresh_depth -= 1
 
 
 def _cache_file(method: str, url: str, params, body) -> Path:
@@ -47,7 +61,7 @@ def request_text(
     """GET (or POST when json_body is given) and return the body as text."""
     method = "POST" if json_body is not None else "GET"
     cache_file = _cache_file(method, url, params, json_body)
-    if use_cache and cache_file.exists() and time.time() - cache_file.stat().st_mtime < cache_ttl():
+    if use_cache and not _fresh_depth and cache_file.exists() and time.time() - cache_file.stat().st_mtime < cache_ttl():
         return cache_file.read_text(encoding="utf-8")
 
     last_error = "unknown error"

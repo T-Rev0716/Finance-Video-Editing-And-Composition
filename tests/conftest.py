@@ -26,6 +26,8 @@ def isolated(tmp_path, monkeypatch):
     monkeypatch.setenv("VPS_REPORTS_DIR", str(tmp_path / "reports"))
     monkeypatch.setenv("VPS_CACHE_DIR", str(tmp_path / "cache"))
     monkeypatch.setenv("VPS_ENV_FILE", str(tmp_path / ".env"))
+    monkeypatch.setenv("VPS_ASSETS_DIR", str(tmp_path / "assets"))
+    monkeypatch.setenv("VPS_USER_DATA_DIR", str(tmp_path / "userdata"))
     monkeypatch.delenv("VPS_CACHE_TTL", raising=False)
 
     def no_network(*_args, **_kwargs):
@@ -87,8 +89,7 @@ class FakeNet:
         raise http.FetchError(f"{host}: no canned response for {url}")
 
 
-@pytest.fixture
-def net(monkeypatch):
+def install_fake_net(monkeypatch) -> FakeNet:
     fake = FakeNet()
     monkeypatch.setattr(http, "request_text", fake)
     # The source modules imported the functions by name, so patch those references too.
@@ -101,6 +102,11 @@ def net(monkeypatch):
     for module in (fred, bls, edgar, treasury):
         monkeypatch.setattr(module, "request_json", fake_json)
     return fake
+
+
+@pytest.fixture
+def net(monkeypatch):
+    return install_fake_net(monkeypatch)
 
 
 SAMPLE_REPORT = {
@@ -124,3 +130,37 @@ def report_file(isolated):
     path = isolated / "reports" / "2026-11-16.json"
     path.write_text(json.dumps(SAMPLE_REPORT), encoding="utf-8")
     return path
+
+
+@pytest.fixture(scope="session")
+def _template_project(tmp_path_factory):
+    """Generate one project for the whole test run; tests get their own copy of it."""
+    from vps import pipeline, projects, reports
+    root = tmp_path_factory.mktemp("template")
+    patch = pytest.MonkeyPatch()
+    try:
+        for name, env in (("projects", "VPS_PROJECTS_DIR"), ("reports", "VPS_REPORTS_DIR"), ("cache", "VPS_CACHE_DIR"),
+                          ("assets", "VPS_ASSETS_DIR"), ("userdata", "VPS_USER_DATA_DIR")):
+            (root / name).mkdir()
+            patch.setenv(env, str(root / name))
+        patch.setenv("VPS_ENV_FILE", str(root / ".env"))
+        install_fake_net(patch)
+        (root / "reports" / "2026-11-16.json").write_text(json.dumps(SAMPLE_REPORT), encoding="utf-8")
+        report = reports.latest_report()
+        theme = report["themes"][0]
+        project_id = projects.new_project_id(theme["theme"])
+        pipeline.generate(project_id, theme["theme"], theme, report, today=TODAY)
+    finally:
+        patch.undo()
+    return root / "projects" / project_id, project_id
+
+
+@pytest.fixture
+def project(isolated, net, report_file, _template_project):
+    """A ready project (copied from the template) inside this test's own folders."""
+    import shutil
+
+    from vps import projects
+    source, project_id = _template_project
+    shutil.copytree(source, isolated / "projects" / project_id)
+    return projects.load(project_id)

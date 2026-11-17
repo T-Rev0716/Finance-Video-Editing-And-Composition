@@ -5,7 +5,7 @@ import traceback
 from datetime import date, datetime
 from typing import Callable
 
-from . import builder, clips, compliance, config, llm, package, projects, topics, wording
+from . import asset_board, builder, clips, compliance, config, llm, package, projects, recording_cards, topics, wording
 
 
 def _headlines(theme: dict, facts: list[dict]) -> list[dict]:
@@ -61,7 +61,7 @@ def generate(project_id: str, topic: str, theme: dict | None = None, report: dic
         }
 
         warnings = list(data["warnings"])
-        if settings.get("ANTHROPIC_API_KEY"):
+        if llm.provider(settings) != "templates":
             progress("Writing the outline, titles and B-roll prompts (LLM, wording only)")
             try:
                 words = llm.llm_wording(brief, settings)
@@ -83,6 +83,10 @@ def generate(project_id: str, topic: str, theme: dict | None = None, report: dic
         project["compliance"] = compliance.run_checks(project, settings.get("DISCLAIMER", ""))
         projects.save(project)
         projects.write_exports(project)
+        # Studio views: recording cards and the visual asset board start from the package.
+        asset_board.load(project_id, project)
+        recording_cards.load(project_id, projects.load(project_id))
+        project = projects.load(project_id)
         progress("Done")
     except Exception as exc:
         project.update({"status": "error", "error": str(exc), "error_detail": traceback.format_exc()})
@@ -97,9 +101,13 @@ def add_transcript(project_id: str, filename: str, text: str, settings: dict | N
     project = projects.load(project_id)
     suffix = ".srt" if filename.lower().endswith(".srt") else ".txt"
     (projects.project_dir(project_id) / f"transcript{suffix}").write_text(text, encoding="utf-8")
-    picker = (lambda segments: llm.llm_clip_plan(segments, settings)) if settings.get("ANTHROPIC_API_KEY") else None
+    picker = (lambda segments: llm.llm_clip_plan(segments, settings)) if llm.provider(settings) != "templates" else None
     project["clips"] = clips.plan_clips(filename, text, picker)
     project["clips"]["file"] = filename
+    # Every number said on the recording is compared with the fact sheet (and the release dates).
+    segments, _estimated = clips.parse_transcript(filename, text)
+    dates = [{"id": "", "status": "primary", "claim": w.get("date_text", ""), "value": "", "as_of": ""} for w in project.get("watch", [])]
+    project["spoken_check"] = clips.spoken_fact_check(segments, project.get("facts", []) + dates)
     project["compliance"] = compliance.run_checks(project, settings.get("DISCLAIMER", ""))
     projects.save(project)
     projects.write_exports(project)

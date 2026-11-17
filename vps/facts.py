@@ -244,3 +244,23 @@ def number_facts(facts: list[dict]) -> list[dict]:
     for i, fact in enumerate(facts, 1):
         fact["id"] = f"F{i}"
     return facts
+
+
+_LABEL_SUFFIX = {
+    "year": "change in a year", "month": "change in a month", "record": "record", "yoy": "12-month change",
+    "yoy_prev": "12-month change, month before", "yoy_peak": "recent peak", "change": "latest month",
+    "avg3": "3-month average", "since_start": "change over the chart",
+}
+
+
+def fact_label(fact: dict) -> str:
+    """A short name for a fact, for cards, thumbnails and change reports (e.g. '10-year Treasury yield')."""
+    from . import catalog
+    key = fact.get("key", "")
+    if key == "WALLET.mortgage_payment":
+        return "Example monthly mortgage payment"
+    if key.startswith("NEWS."):
+        return "News headline"
+    title = catalog.SERIES.get(fact.get("series_id", ""), {}).get("title") or fact.get("series_id") or fact.get("source_name", "")
+    suffix = _LABEL_SUFFIX.get(key.rsplit(".", 1)[-1])
+    return f"{title} ({suffix})" if suffix else title

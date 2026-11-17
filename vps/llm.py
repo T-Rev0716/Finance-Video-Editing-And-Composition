@@ -115,8 +115,71 @@ def _client(settings: dict):
     return anthropic, anthropic.Anthropic(api_key=key, timeout=180.0, max_retries=2)
 
 
+def provider(settings: dict) -> str:
+    """Which wording engine to use: 'anthropic', 'ollama' or 'templates'.
+    auto = Anthropic when a key is saved, otherwise the built-in templates."""
+    choice = (settings.get("LLM_PROVIDER") or "auto").strip().lower()
+    if choice == "ollama":
+        return "ollama"
+    if choice == "templates":
+        return "templates"
+    return "anthropic" if settings.get("ANTHROPIC_API_KEY") else "templates"
+
+
+def _ollama_request(url: str, payload: dict | None = None, timeout: float = 600.0) -> dict:
+    """One call to the Ollama server on this computer. Separate so tests can replace it."""
+    import requests
+    try:
+        response = requests.post(url, json=payload, timeout=timeout) if payload is not None else requests.get(url, timeout=10)
+    except requests.RequestException as exc:
+        raise LLMUnavailable("Could not reach Ollama. Start it (run 'ollama serve') and check the address in Settings.") from exc
+    if response.status_code != 200:
+        raise LLMUnavailable(f"Ollama returned an error ({response.status_code}): {response.text[:200]}")
+    try:
+        return response.json()
+    except ValueError as exc:
+        raise LLMUnavailable("Ollama returned something that was not JSON.") from exc
+
+
+def ollama_models(settings: dict) -> list[str]:
+    """Names of the models installed in Ollama."""
+    base = (settings.get("OLLAMA_URL") or "http://127.0.0.1:11434").rstrip("/")
+    return [m.get("name", "") for m in _ollama_request(f"{base}/api/tags").get("models", []) if m.get("name")]
+
+
+def _ollama_model(settings: dict) -> str:
+    """The model named in Settings, else the first installed one with 'qwen' in its name, else the first."""
+    chosen = (settings.get("OLLAMA_MODEL") or "").strip()
+    if chosen:
+        return chosen
+    installed = ollama_models(settings)
+    if not installed:
+        raise LLMUnavailable("Ollama has no models installed. Pull one (for example: ollama pull <model>) and name it in Settings.")
+    return next((m for m in installed if "qwen" in m.lower()), installed[0])
+
+
+def _parse_ollama(settings: dict, system: str, user: str, schema):
+    """Structured output from a local model. The reply is validated against the same schema,
+    then goes through the same number guard and compliance checks as any other wording."""
+    from pydantic import ValidationError
+    base = (settings.get("OLLAMA_URL") or "http://127.0.0.1:11434").rstrip("/")
+    model = _ollama_model(settings)
+    reply = _ollama_request(f"{base}/api/chat", {
+        "model": model, "stream": False, "format": schema.model_json_schema(),
+        "options": {"temperature": 0.4, "num_ctx": 16384},
+        "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
+    })
+    content = (reply.get("message") or {}).get("content", "")
+    try:
+        return schema.model_validate_json(content), f"ollama/{model}"
+    except ValidationError as exc:
+        raise LLMUnavailable(f"The local model's answer was not in the expected format ({len(exc.errors())} problem(s)).") from exc
+
+
 def _parse(settings: dict, system: str, user: str, schema, max_tokens: int = 16000):
     """One structured-output request. Returns (parsed object, model that answered)."""
+    if provider(settings) == "ollama":
+        return _parse_ollama(settings, system, user, schema)
     anthropic, client = _client(settings)
     model = settings.get("ANTHROPIC_MODEL") or "claude-opus-5-5"
     try:

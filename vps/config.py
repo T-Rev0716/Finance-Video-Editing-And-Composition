@@ -15,6 +15,8 @@ DEFAULT_DISCLAIMER = (
     "Talk to a licensed professional about your own situation."
 )
 
+DEFAULT_RADAR_DIR = r"C:\Users\T-Rev\OpenBot\Shared\Council-of-the-Future\topic-radar\reports"
+
 # key -> (default, is_secret)
 SETTING_KEYS: dict[str, tuple[str, bool]] = {
     "FRED_API_KEY": ("", True),
@@ -25,6 +27,13 @@ SETTING_KEYS: dict[str, tuple[str, bool]] = {
     "CHART_THEME": ("dark", False),
     "CHANNEL_NAME": ("", False),
     "DISCLAIMER": (DEFAULT_DISCLAIMER, False),
+    # Wording engine: auto = Anthropic if a key is saved, else built-in templates.
+    # "ollama" uses a model running on this computer (free); "templates" never calls a model.
+    "LLM_PROVIDER": ("auto", False),
+    "OLLAMA_URL": ("http://127.0.0.1:11434", False),
+    "OLLAMA_MODEL": ("", False),  # blank = first installed model with "qwen" in its name, else the first one
+    "WHISPER_MODEL": ("auto", False),  # auto = large-v3 on an NVIDIA GPU, small on CPU
+    "RADAR_REPORTS_DIR": (DEFAULT_RADAR_DIR, False),
 }
 
 
@@ -45,6 +54,20 @@ def projects_dir() -> Path:
 
 def cache_dir() -> Path:
     path = _dir("VPS_CACHE_DIR", ROOT / ".cache")
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def assets_dir() -> Path:
+    """Things reused across episodes: presenter photos, the B-roll library, thumbnail presets."""
+    path = _dir("VPS_ASSETS_DIR", ROOT / "assets")
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def user_data_dir() -> Path:
+    """Cross-project records the app writes (the learning log index)."""
+    path = _dir("VPS_USER_DATA_DIR", ROOT / "data")
     path.mkdir(parents=True, exist_ok=True)
     return path
 

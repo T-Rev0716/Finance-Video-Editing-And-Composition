@@ -71,3 +71,84 @@ def has_stray_number(text: str) -> bool:
     work = MARKER.sub("", work)
     work = ALLOWED_TERMS.sub("", work)
     return bool(STRAY_NUMBER.search(work))
+
+
+_DIGITS = re.compile(r"\d[\d,]*(?:\.\d+)?")
+_WITH_UNIT = re.compile(r"(\$)?(\d[\d,]*(?:\.\d+)?)\s?(%|percent\b|percentage points?\b|basis points\b|bps\b)?", re.IGNORECASE)
+
+
+def _normalize(number: str) -> str:
+    """'$7,417.00' -> '7417', '7.110' -> '7.11' so equal amounts compare equal."""
+    match = _DIGITS.search(number)
+    if not match:
+        return ""
+    text = match.group(0).replace(",", "")
+    if "." in text:
+        text = text.rstrip("0").rstrip(".")
+    return text.lstrip("0") or "0"
+
+
+def _tokens(text: str) -> list[tuple[str, str, str]]:
+    """(normalized number, unit, original text). unit is '%' , '$' or '' (a plain number)."""
+    out = []
+    for match in _WITH_UNIT.finditer(text):
+        unit = "$" if match.group(1) else "%" if match.group(3) else ""
+        out.append((_normalize(match.group(2)), unit, match.group(0).strip()))
+    return out
+
+
+def verified_numbers(facts: list[dict]) -> set[tuple[str, str]]:
+    """Every (number, unit) that appears in a sourced fact. News-only 'verify' facts do not count."""
+    found: set[tuple[str, str]] = set()
+    for fact in facts:
+        if fact.get("status") == "verify":
+            continue
+        for number, unit, _raw in _tokens(f"{fact.get('claim', '')} {fact.get('value', '')} {fact.get('as_of', '')}"):
+            found.add((number, unit))
+    return found
+
+
+def is_verified(number: str, unit: str, allowed: set[tuple[str, str]]) -> bool:
+    """A percentage must match a percentage and a dollar amount a dollar amount, so the 3 in
+    'Q3' never excuses a typed '3%'. A number typed with no unit may match any fact number."""
+    if unit:
+        return (number, unit) in allowed
+    return any(n == number for n, _unit in allowed)
+
+
+def unverified_numbers(text: str, facts: list[dict]) -> list[str]:
+    """Numbers typed into free text that are not on the fact sheet.
+
+    {F7} placeholders, [CHART 2] markers and names like 401(k) or 10-year are ignored.
+    Used to warn (never to silently fix) when a presenter edits wording by hand.
+    """
+    allowed = verified_numbers(facts)
+    work = PLACEHOLDER.sub(" ", text)
+    work = MARKER.sub(" ", work)
+    work = ALLOWED_TERMS.sub(" ", work)
+    out: list[str] = []
+    for number, unit, raw in _tokens(work):
+        if not is_verified(number, unit, allowed) and raw not in out:
+            out.append(raw)
+    return out
+
+
+def fill_placeholders(text: str, facts_by_id: dict[str, dict]) -> tuple[str, list[str]]:
+    """Swap {F7} for that fact's value, leaving the rest of the text alone. Returns (text, ids used)."""
+    used: list[str] = []
+
+    def swap(match: re.Match) -> str:
+        fact = facts_by_id.get(match.group(1))
+        if not fact or not fact.get("value"):
+            return match.group(0)
+        if fact["id"] not in used:
+            used.append(fact["id"])
+        return fact["value"]
+
+    return PLACEHOLDER.sub(swap, text), used
+
+
+def unknown_placeholders(text: str, facts_by_id: dict[str, dict]) -> list[str]:
+    """{F99}-style references that do not exist (or have no value) on the fact sheet."""
+    return [m for m in dict.fromkeys(PLACEHOLDER.findall(text))
+            if m not in facts_by_id or not facts_by_id[m].get("value")]

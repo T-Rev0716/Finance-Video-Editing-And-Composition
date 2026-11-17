@@ -2,13 +2,15 @@
 from __future__ import annotations
 
 import threading
+from pathlib import Path
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
-from fastapi.responses import FileResponse, Response
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi.responses import FileResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from . import __version__, config, pipeline, projects, reports
+from . import (__version__, asset_board, config, fact_diff, graphics, learning_log, llm, pipeline, projects,
+               recording_cards, reports, thumbnails, timeline, transcribe)
 from .sources import fred
 from .sources.http import FetchError
 
@@ -60,6 +62,8 @@ def state() -> dict:
         "reports_folder": str(config.reports_dir()),
         "projects": projects.list_projects(),
         "keys": {"fred": bool(settings["FRED_API_KEY"]), "llm": bool(settings["ANTHROPIC_API_KEY"])},
+        "wording_engine": llm.provider(settings),
+        "radar_dir": settings["RADAR_REPORTS_DIR"],
     }
 
 
@@ -169,6 +173,8 @@ def update_settings(body: SettingsUpdate) -> dict:
             continue  # a blank key field means "keep what is saved"
         if key == "CHART_THEME" and value not in ("dark", "light"):
             continue
+        if key == "LLM_PROVIDER" and value not in ("auto", "anthropic", "ollama", "templates"):
+            continue
         updates[key] = value
     for key in body.clear:
         if key in config.SETTING_KEYS:
@@ -188,6 +194,423 @@ def test_fred() -> dict:
         return {"ok": False, "message": "FRED did not accept the key, but the public download works. " + " ".join(series.notes)}
     how = "with your API key" if key else "without a key (public download)"
     return {"ok": True, "message": f"FRED works {how}. Latest 10-year Treasury yield: {series.latest_value:.2f}% on {series.latest_date}."}
+
+
+
+# =====================================================================================
+# Creator studio: recording cards, asset board, thumbnails, graphics
+# =====================================================================================
+USER_ERRORS = (asset_board.AssetError, thumbnails.ThumbnailError, graphics.GraphicsError, fact_diff.FactDiffError,
+               transcribe.Unavailable, reports.RadarImportError, ValueError)
+
+
+def _try(action):
+    """Run a studio action; turn 'the user asked for something not allowed' into a clear 400."""
+    try:
+        return action()
+    except KeyError as exc:
+        raise HTTPException(404, f"Not found: {exc.args[0]}") from None
+    except FileNotFoundError:
+        raise HTTPException(404, "Not found") from None
+    except USER_ERRORS as exc:
+        raise HTTPException(400, str(exc)) from None
+
+
+class CardEdit(BaseModel):
+    text: str | None = None
+    pronunciation: str | None = None
+    fact_ids: list[str] | None = None
+    checkpoint: bool = True
+
+
+class CardStatus(BaseModel):
+    status: str
+
+
+class CardMove(BaseModel):
+    delta: int
+
+
+class CardOrder(BaseModel):
+    order: list[str]
+
+
+class TextCheck(BaseModel):
+    text: str
+
+
+class Cues(BaseModel):
+    cues: list[dict]
+    total_seconds: float = 0
+
+
+def _cards_view(project_id: str, state: dict | None = None) -> dict:
+    project = _project_or_404(project_id)
+    return recording_cards.view(state or recording_cards.load(project_id, project), project)
+
+
+@app.get("/api/projects/{project_id}/cards")
+def get_cards(project_id: str) -> dict:
+    return _cards_view(project_id)
+
+
+@app.put("/api/projects/{project_id}/cards/{card_id}")
+def edit_card(project_id: str, card_id: str, body: CardEdit) -> dict:
+    _project_or_404(project_id)
+    changes = {k: v for k, v in body.model_dump().items() if k != "checkpoint" and v is not None}
+    return _cards_view(project_id, _try(lambda: recording_cards.update_card(project_id, card_id, changes, body.checkpoint)))
+
+
+@app.post("/api/projects/{project_id}/cards/{card_id}/status")
+def card_status(project_id: str, card_id: str, body: CardStatus) -> dict:
+    _project_or_404(project_id)
+    state = _try(lambda: recording_cards.set_status(project_id, card_id, body.status))
+    view = _cards_view(project_id, state)
+    if body.status == "recorded":  # freeze what was recorded against, the first time
+        view["frozen_at"] = fact_diff.ensure_frozen(project_id, "first card marked recorded")["frozen_at"]
+    return view
+
+
+@app.post("/api/projects/{project_id}/cards/{card_id}/move")
+def card_move(project_id: str, card_id: str, body: CardMove) -> dict:
+    _project_or_404(project_id)
+    return _cards_view(project_id, _try(lambda: recording_cards.move(project_id, card_id, body.delta)))
+
+
+@app.post("/api/projects/{project_id}/cards/{card_id}/reset")
+def card_reset(project_id: str, card_id: str) -> dict:
+    _project_or_404(project_id)
+    return _cards_view(project_id, _try(lambda: recording_cards.reset_card(project_id, card_id)))
+
+
+@app.post("/api/projects/{project_id}/cards-order")
+def cards_order(project_id: str, body: CardOrder) -> dict:
+    _project_or_404(project_id)
+    return _cards_view(project_id, _try(lambda: recording_cards.reorder(project_id, body.order)))
+
+
+@app.post("/api/projects/{project_id}/cards-undo")
+def cards_undo(project_id: str) -> dict:
+    _project_or_404(project_id)
+    return _cards_view(project_id, recording_cards.undo(project_id))
+
+
+@app.post("/api/projects/{project_id}/cards-redo")
+def cards_redo(project_id: str) -> dict:
+    _project_or_404(project_id)
+    return _cards_view(project_id, recording_cards.redo(project_id))
+
+
+@app.post("/api/projects/{project_id}/cards-check")
+def cards_check(project_id: str, body: TextCheck) -> dict:
+    """Live number-guard and compliance check while typing (nothing is saved)."""
+    return recording_cards.check_text(body.text, _project_or_404(project_id))
+
+
+@app.post("/api/projects/{project_id}/cards-cues")
+def cards_cues(project_id: str, body: Cues) -> dict:
+    _project_or_404(project_id)
+    return _cards_view(project_id, _try(lambda: recording_cards.set_cues(project_id, body.cues, body.total_seconds)))
+
+
+@app.get("/api/projects/{project_id}/timeline/{name}")
+def timeline_file(project_id: str, name: str) -> PlainTextResponse:
+    project = _project_or_404(project_id)
+    state = recording_cards.load(project_id, project)
+    record = project.get("recording") or {}
+    uri = Path(record["path"]).as_uri() if record.get("path") and Path(record["path"]).is_absolute() else ""
+    files = timeline.export_all(project, state, uri)
+    if name not in files:
+        raise HTTPException(404, "Choose chapters.txt, timeline.edl or timeline.fcpxml")
+    folder = projects.project_dir(project_id) / "timeline"
+    folder.mkdir(exist_ok=True)
+    for file_name, text in files.items():
+        (folder / file_name).write_text(text, encoding="utf-8")
+    return PlainTextResponse(files[name], headers={"Content-Disposition": f'attachment; filename="{name}"'})
+
+
+# ---------------------------------------------------------------- visual asset board
+class SlotStatus(BaseModel):
+    status: str
+
+
+class LibraryPick(BaseModel):
+    library_id: str
+
+
+@app.get("/api/projects/{project_id}/asset-board")
+def get_board(project_id: str) -> dict:
+    return asset_board.view(asset_board.load(project_id, _project_or_404(project_id)))
+
+
+@app.post("/api/projects/{project_id}/shots/{shot_n}/asset")
+def upload_asset(project_id: str, shot_n: int, file: UploadFile = File(...), save_to_library: bool = Form(False)) -> dict:
+    _project_or_404(project_id)
+    name = file.filename or "asset"
+    return asset_board.view(_try(lambda: asset_board.attach_file(project_id, shot_n, name, file.file, save_to_library)))
+
+
+@app.post("/api/projects/{project_id}/shots/{shot_n}/asset-status")
+def asset_status(project_id: str, shot_n: int, body: SlotStatus) -> dict:
+    _project_or_404(project_id)
+    return asset_board.view(_try(lambda: asset_board.set_status(project_id, shot_n, body.status)))
+
+
+@app.post("/api/projects/{project_id}/shots/{shot_n}/asset-library")
+def asset_from_library(project_id: str, shot_n: int, body: LibraryPick) -> dict:
+    _project_or_404(project_id)
+    return asset_board.view(_try(lambda: asset_board.assign_from_library(project_id, shot_n, body.library_id)))
+
+
+@app.post("/api/projects/{project_id}/shots/{shot_n}/asset-clear")
+def asset_clear(project_id: str, shot_n: int) -> dict:
+    _project_or_404(project_id)
+    return asset_board.view(_try(lambda: asset_board.clear(project_id, shot_n)))
+
+
+@app.get("/api/library")
+def library() -> dict:
+    return {"items": asset_board.library_list()}
+
+
+@app.get("/api/library/file/{file_id}")
+def library_file(file_id: str) -> FileResponse:
+    return FileResponse(_try(lambda: asset_board.library_file(file_id)))
+
+
+@app.delete("/api/library/{file_id}")
+def library_delete(file_id: str) -> dict:
+    return {"items": _try(lambda: asset_board.library_remove(file_id))}
+
+
+# ---------------------------------------------------------------- thumbnail workshop
+class Preset(BaseModel):
+    name: str
+    layout: str
+    theme: str
+    host: str = ""
+
+
+@app.get("/api/thumbnails/options")
+def thumbnail_options() -> dict:
+    return thumbnails.options()
+
+
+@app.get("/api/assets/hosts")
+def hosts() -> dict:
+    return {"hosts": thumbnails.list_hosts()}
+
+
+@app.post("/api/assets/hosts")
+def add_host(file: UploadFile = File(...)) -> dict:
+    name = file.filename or "host.png"
+    _try(lambda: thumbnails.add_host(name, file.file))
+    return {"hosts": thumbnails.list_hosts()}
+
+
+@app.get("/api/assets/hosts/file/{name}")
+def host_image(name: str) -> FileResponse:
+    return FileResponse(_try(lambda: thumbnails.host_file(name)))
+
+
+@app.delete("/api/assets/hosts/{name}")
+def delete_host(name: str) -> dict:
+    return {"hosts": _try(lambda: thumbnails.remove_host(name))}
+
+
+@app.post("/api/projects/{project_id}/thumbnails")
+def make_thumbnail(project_id: str, body: dict) -> dict:
+    _project_or_404(project_id)
+    channel = config.load_settings()["CHANNEL_NAME"]
+    return _try(lambda: thumbnails.create(project_id, body, channel))
+
+
+@app.delete("/api/projects/{project_id}/thumbnails/{number}")
+def delete_thumbnail(project_id: str, number: int) -> dict:
+    _project_or_404(project_id)
+    return {"thumbnail_renders": thumbnails.remove(project_id, number)}
+
+
+@app.post("/api/thumbnails/presets")
+def save_preset(body: Preset) -> dict:
+    return {"presets": _try(lambda: thumbnails.save_preset(body.name, body.layout, body.theme, body.host))}
+
+
+@app.delete("/api/thumbnails/presets/{name}")
+def delete_preset(name: str) -> dict:
+    return {"presets": thumbnails.delete_preset(name)}
+
+
+# ---------------------------------------------------------------- explanation graphics
+@app.post("/api/projects/{project_id}/graphics")
+def make_graphic(project_id: str, body: dict) -> dict:
+    _project_or_404(project_id)
+    kind = body.get("type")
+    if kind == "reveal":
+        return _try(lambda: graphics.reveal_animation(project_id, int(body.get("chart_n") or 0)))
+    if kind == "highlight":
+        return _try(lambda: graphics.highlight_chart(project_id, int(body.get("chart_n") or 0), str(body.get("when", "")),
+                                                     str(body.get("label", "")), int(body.get("series_index") or 0)))
+    if kind == "comparison":
+        return _try(lambda: graphics.comparison_card(project_id, str(body.get("title", "")), body.get("fact_ids") or None,
+                                                     body.get("chart_n"), body.get("dates"), int(body.get("series_index") or 0)))
+    if kind == "flow":
+        return _try(lambda: graphics.flow_diagram(project_id, body.get("steps") or [], str(body.get("title", ""))))
+    raise HTTPException(400, "type must be reveal, highlight, comparison or flow")
+
+
+@app.delete("/api/projects/{project_id}/graphics/{number}")
+def delete_graphic(project_id: str, number: int) -> dict:
+    _project_or_404(project_id)
+    return {"graphics": graphics.remove(project_id, number)}
+
+
+# =====================================================================================
+# Fact freeze, learning log, local post-production
+# =====================================================================================
+class Decisions(BaseModel):
+    decisions: dict[str, str]
+
+
+@app.post("/api/projects/{project_id}/freeze-facts")
+def freeze_facts(project_id: str) -> dict:
+    _project_or_404(project_id)
+    snapshot = fact_diff.freeze(project_id, "manual")
+    return {"frozen_at": snapshot["frozen_at"], "facts": len(snapshot["facts"]), "series": len(snapshot["series"])}
+
+
+@app.post("/api/projects/{project_id}/check-changes")
+def check_changes(project_id: str) -> dict:
+    _project_or_404(project_id)
+    return _try(lambda: fact_diff.check_changes(project_id))
+
+
+@app.get("/api/projects/{project_id}/fact-changes")
+def fact_changes(project_id: str) -> dict:
+    _project_or_404(project_id)
+    snapshot = fact_diff.frozen(project_id)
+    return {"frozen": {"frozen_at": snapshot["frozen_at"], "reason": snapshot["reason"], "facts": len(snapshot["facts"])} if snapshot else None,
+            "report": fact_diff.last_report(project_id)}
+
+
+@app.post("/api/projects/{project_id}/resolve-changes")
+def resolve_changes(project_id: str, body: Decisions) -> dict:
+    _project_or_404(project_id)
+    return _try(lambda: fact_diff.resolve(project_id, body.decisions))
+
+
+@app.get("/api/projects/{project_id}/learning-log")
+def get_learning(project_id: str) -> dict:
+    _project_or_404(project_id)
+    return learning_log.load(project_id)
+
+
+@app.post("/api/projects/{project_id}/learning-log")
+def save_learning(project_id: str, body: dict) -> dict:
+    _project_or_404(project_id)
+    return _try(lambda: learning_log.save(project_id, body))
+
+
+@app.get("/api/learning-log")
+def learning_summary() -> dict:
+    return learning_log.summarize()
+
+
+class RecordingPath(BaseModel):
+    path: str
+
+
+class DeadAir(BaseModel):
+    min_silence: float = transcribe.MIN_SILENCE
+
+
+class ShortRequest(BaseModel):
+    chart_n: int | None = None
+
+
+@app.get("/api/capabilities")
+def capabilities() -> dict:
+    return transcribe.capabilities()
+
+
+@app.post("/api/projects/{project_id}/recording")
+def upload_recording(project_id: str, file: UploadFile = File(...)) -> dict:
+    _project_or_404(project_id)
+    name = file.filename or "recording.mp4"
+    return _try(lambda: transcribe.add_upload(project_id, name, file.file))
+
+
+@app.post("/api/projects/{project_id}/recording-path")
+def recording_from_path(project_id: str, body: RecordingPath) -> dict:
+    _project_or_404(project_id)
+    return _try(lambda: transcribe.add_path(project_id, body.path))
+
+
+def _run_transcription(project_id: str) -> None:
+    key = f"{project_id}:transcribe"
+
+    def progress(message: str) -> None:
+        with _jobs_lock:
+            _jobs[key]["steps"].append(message)
+
+    try:
+        project = projects.load(project_id)
+        source = transcribe.recording_path(project)
+        segments, _label = transcribe.transcribe(source, config.load_settings()["WHISPER_MODEL"], progress)
+        progress("Checking spoken numbers against the fact sheet and planning clips")
+        pipeline.add_transcript(project_id, "transcript.srt", transcribe.segments_to_srt(segments))
+    except Exception as exc:
+        with _jobs_lock:
+            _jobs[key]["error"] = str(exc)
+    finally:
+        with _jobs_lock:
+            _jobs[key]["done"] = True
+
+
+@app.post("/api/projects/{project_id}/transcribe")
+def start_transcription(project_id: str) -> dict:
+    project = _project_or_404(project_id)
+    _try(lambda: transcribe.recording_path(project))
+    if not transcribe.capabilities()["faster_whisper"]:
+        raise HTTPException(400, transcribe.capabilities()["transcribe_note"])
+    with _jobs_lock:
+        _jobs[f"{project_id}:transcribe"] = {"steps": ["Loading the speech model"], "done": False, "error": ""}
+    threading.Thread(target=_run_transcription, args=(project_id,), daemon=True).start()
+    return {"started": True}
+
+
+@app.get("/api/projects/{project_id}/transcribe/progress")
+def transcription_progress(project_id: str) -> dict:
+    with _jobs_lock:
+        job = dict(_jobs.get(f"{project_id}:transcribe") or {"steps": [], "done": True, "error": ""})
+    return {"steps": list(job["steps"]), "done": job["done"], "error": job["error"]}
+
+
+@app.post("/api/projects/{project_id}/strip-dead-air")
+def strip_dead_air(project_id: str, body: DeadAir) -> dict:
+    _project_or_404(project_id)
+    if not 0.2 <= body.min_silence <= 5:
+        raise HTTPException(400, "Choose a silence length between 0.2 and 5 seconds.")
+    return _try(lambda: transcribe.strip_dead_air(project_id, body.min_silence))
+
+
+@app.post("/api/projects/{project_id}/clips/{clip_n}/short")
+def make_short(project_id: str, clip_n: int, body: ShortRequest) -> dict:
+    _project_or_404(project_id)
+    return _try(lambda: transcribe.export_short(project_id, clip_n, body.chart_n))
+
+
+@app.get("/api/ollama/models")
+def ollama_models() -> dict:
+    try:
+        return {"ok": True, "models": llm.ollama_models(config.load_settings())}
+    except llm.LLMUnavailable as exc:
+        return {"ok": False, "models": [], "message": str(exc)}
+
+
+@app.post("/api/reports/refresh")
+def refresh_reports() -> dict:
+    return _try(lambda: reports.import_latest_radar(config.load_settings()["RADAR_REPORTS_DIR"]))
 
 
 app.mount("/static", StaticFiles(directory=WEB_DIR), name="static")

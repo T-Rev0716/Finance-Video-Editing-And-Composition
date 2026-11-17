@@ -5,6 +5,7 @@ and the reason is recorded - a number is never filled in.
 """
 from __future__ import annotations
 
+import json
 from datetime import date
 from pathlib import Path
 from typing import Callable
@@ -226,6 +227,8 @@ def gather(plan: dict, theme: dict, ctx: DataContext, charts_dir: Path,
                 progress(f"Fetching data for chart {number}: {catalog.CHARTS[chart_id]['title']}")
                 chart, new_facts = build_chart(chart_id, catalog.CHARTS[chart_id], ctx, plan.get("tickers", []))
             files = charts.render_chart(chart, charts_dir, number, theme_name)
+            spec_name = f"chart_{number:02d}_{chart['id']}.json"
+            (charts_dir / spec_name).write_text(json.dumps(charts.chart_to_spec(chart)), encoding="utf-8")
         except (FetchError, ValueError) as exc:
             ctx.warnings.append(f"Chart skipped ({chart_id}): {exc}")
             if backups and len(chart_entries) + (len(jobs) - index) < 3:
@@ -235,7 +238,8 @@ def gather(plan: dict, theme: dict, ctx: DataContext, charts_dir: Path,
         last = max(s.dates[-1] for s in chart["series"])
         chart_entries.append({
             "n": number, "id": chart["id"], "title": chart["title"], "teaches": chart.get("teaches", ""),
-            "kind": chart["kind"], "files": files,
+            "kind": chart["kind"], "files": files, "spec_file": spec_name, "theme": theme_name,
+            "series_ids": [s.id for s in chart["series"]],
             "series": [{"title": s.title, "source_name": s.source_name, "source_url": s.source_url} for s in chart["series"]],
             "data_through": fmt.fmt_date(last, chart["series"][0].frequency or "daily"),
             "fact_keys": [f["key"] for f in kept],

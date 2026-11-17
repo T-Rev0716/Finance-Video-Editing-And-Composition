@@ -91,7 +91,8 @@ def build_shot_list(outline: dict, data: dict, broll: list[dict], headlines: lis
     def chart_shot(section: str, number: int) -> None:
         chart = charts.get(number)
         if chart:
-            add(section, f"CHART {number}", chart["title"], file=chart["files"]["1920x1080"],
+            add(section, f"CHART {number}", chart["title"], ref={"kind": "CHART", "n": number},
+                file=chart["files"]["1920x1080"],
                 vertical_file=chart["files"]["1080x1920"],
                 note=f"Real data through {chart['data_through']}. Source is printed on the chart.")
 
@@ -99,6 +100,7 @@ def build_shot_list(outline: dict, data: dict, broll: list[dict], headlines: lis
         head = heads.get(number)
         if head:
             add(section, "HEADLINE SCREENSHOT", f"“{head['title']}” ({head['source']})", url=head["url"],
+                ref={"kind": "HEADLINE", "n": number},
                 note="Screenshot the real page with the outlet's name visible. Do not edit the headline.")
 
     def broll_shot(section: str, number: int) -> None:
@@ -106,6 +108,7 @@ def build_shot_list(outline: dict, data: dict, broll: list[dict], headlines: lis
         if item and number not in used_broll:
             used_broll.add(number)
             add(section, "B-ROLL (AI)", item["idea"] or "Illustrative B-roll", prompt=item["prompt"],
+                ref={"kind": "B-ROLL", "n": number},
                 label=item["label"], blocked=item["blocked"],
                 note=(f"BLOCKED: {item['blocked_reason']}. Rewrite as a generic scene." if item["blocked"]
                       else "Paste the prompt into Higgsfield. Add an on-screen \"Illustrative\" label in the edit."))

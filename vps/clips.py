@@ -226,3 +226,171 @@ def plan_clips(filename: str, text: str, llm_picker=None) -> dict:
         message = "Fewer than three self-contained 30-60 second clips were found in this transcript."
     return {"clips": clips, "source": source, "estimated_times": estimated, "message": message.strip(),
             "transcript_seconds": round(total), "segments": len(segments)}
+
+
+# ---------------------------------------------------------------- spoken fact-check
+_ONES = {w: i for i, w in enumerate(
+    "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+    "seventeen eighteen nineteen".split())}
+_TENS = {"twenty": 20, "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90}
+_SCALES = {"hundred": 100, "thousand": 1_000}
+_UNIT_WORDS = {"percent", "%", "dollars", "dollar", "bucks", "points", "point", "basis", "million", "billion",
+               "trillion", "thousand", "bps", "cents"}
+_WORD = re.compile(r"\$?\d[\d,]*(?:\.\d+)?%?|[A-Za-z]+(?:'[a-z]+)?|%")
+
+
+def _number_words(tokens: list[str], i: int) -> tuple[float, int, bool] | None:
+    """Parse spelled-out numbers starting at tokens[i]: 'seven point one one', 'two thousand one hundred'.
+    Returns (value, tokens used, had a decimal point)."""
+    first, second = tokens[i].lower(), tokens[i + 1].lower() if i + 1 < len(tokens) else ""
+    if first in ("nineteen", "twenty") and (second in _TENS or _ONES.get(second, 0) >= 10):
+        # a year said in words: "twenty twenty six", "nineteen ninety nine"
+        year = (19 if first == "nineteen" else 20) * 100 + (_TENS.get(second) or _ONES[second])
+        used = 2
+        third = tokens[i + 2].lower() if i + 2 < len(tokens) else ""
+        if second in _TENS and 0 < _ONES.get(third, 0) < 10:
+            year, used = year + _ONES[third], 3
+        return float(year), used, False
+    total, current, used, seen = 0.0, 0.0, 0, False
+    while i + used < len(tokens):
+        word = tokens[i + used].lower()
+        if word in _ONES:
+            current += _ONES[word]
+        elif word in _TENS:
+            current += _TENS[word]
+        elif word in _SCALES and seen:
+            current = max(current, 1) * _SCALES[word]
+            if word == "thousand":
+                total, current = total + current, 0.0
+        elif word == "and" and seen and i + used + 1 < len(tokens) and tokens[i + used + 1].lower() in {**_ONES, **_TENS}:
+            used += 1
+            continue
+        elif word == "a" and not seen and i + used + 1 < len(tokens) and tokens[i + used + 1].lower() in _SCALES:
+            current = 1.0
+        else:
+            break
+        seen = True
+        used += 1
+    if not seen:
+        return None
+    value, decimal = total + current, False
+    if i + used + 1 < len(tokens) and tokens[i + used].lower() == "point" and tokens[i + used + 1].lower() in _ONES:
+        digits, j = "", i + used + 1
+        while j < len(tokens) and tokens[j].lower() in _ONES and _ONES[tokens[j].lower()] < 10:
+            digits += str(_ONES[tokens[j].lower()])
+            j += 1
+        if digits:
+            value, used, decimal = float(f"{int(value)}.{digits}"), j - i, True
+    return value, used, decimal
+
+
+def spoken_numbers(text: str) -> list[dict]:
+    """Numbers said in a line of transcript, as digits or as words. Plain small counts
+    ('three reasons') and names like 401(k) or 10-year are not treated as data."""
+    from .numbers import ALLOWED_TERMS
+    text = ALLOWED_TERMS.sub(" ", text)
+    tokens = _WORD.findall(text)
+    found, i = [], 0
+    while i < len(tokens):
+        token = tokens[i]
+        nxt = tokens[i + 1].lower() if i + 1 < len(tokens) else ""
+        if token[0].isdigit() or token[0] == "$":
+            raw = token.strip("$%").replace(",", "")
+            try:
+                value = float(raw)
+            except ValueError:
+                i += 1
+                continue
+            has_unit = token.startswith("$") or token.endswith("%") or nxt in _UNIT_WORDS
+            decimals = len(raw.partition(".")[2])
+            spoken, used = token + (f" {nxt}" if nxt in _UNIT_WORDS else ""), 1
+        else:
+            parsed = _number_words(tokens, i)
+            if not parsed:
+                i += 1
+                continue
+            value, used, decimal = parsed
+            after = tokens[i + used].lower() if i + used < len(tokens) else ""
+            has_unit = decimal or after in _UNIT_WORDS
+            decimals = len(str(value).partition(".")[2]) if decimal else 0
+            spoken = " ".join(tokens[i:i + used]) + (f" {after}" if after in _UNIT_WORDS else "")
+        if has_unit or value > 12:
+            unit_text = spoken.lower()
+            unit = ("$" if "$" in unit_text or any(w in unit_text.split() for w in ("dollars", "dollar", "bucks"))
+                    else "%" if "%" in unit_text or any(w in unit_text.split() for w in ("percent", "points", "basis", "bps")) else "")
+            found.append({"spoken": spoken, "value": value, "decimals": decimals, "unit": unit})
+        i += used
+    return found
+
+
+def _fact_numbers(facts: list[dict]) -> list[tuple[float, str, str, str]]:
+    """(number, unit, fact id, the fact's display value) for every number in a sourced fact."""
+    from .numbers import _tokens
+    out = []
+    for fact in facts:
+        if fact.get("status") == "verify":
+            continue
+        for number, unit, _raw in _tokens(f"{fact.get('claim', '')} {fact.get('value', '')} {fact.get('as_of', '')}"):
+            try:
+                out.append((float(number), unit, fact.get("id", ""), fact.get("value", "") or fact.get("claim", "")[:60]))
+            except ValueError:
+                continue
+    return out
+
+
+def spoken_fact_check(segments: list[dict], facts: list[dict]) -> dict:
+    """Compare every number said on the recording with the fact sheet.
+
+    exact match -> fine. A rounded form of a fact ('about seven percent' for 7.11%) ->
+    listed as 'rounded'. Anything else -> 'unverified', with its timestamp, so it can
+    be cut or checked before publishing."""
+    known = _fact_numbers(facts)
+    flags, checked, matched = [], 0, 0
+    for segment in segments:
+        for item in spoken_numbers(segment["text"]):
+            checked += 1
+            value = item["value"]
+            # a spoken percentage is compared with percentage facts, dollars with dollar facts
+            pool = [k for k in known if not item["unit"] or k[1] == item["unit"]]
+            if any(abs(value - number) < 1e-9 for number, *_ in pool):
+                matched += 1
+                continue
+            entry = {"seconds": round(segment["start"], 1), "time": format_time(segment["start"]),
+                     "spoken": item["spoken"], "text": segment["text"]}
+            rounded = next(((n, fid, shown) for n, _unit, fid, shown in pool
+                            if n != value and abs(round(n, item["decimals"]) - value) < 1e-9), None)
+            if rounded:
+                entry.update(status="rounded", fact_id=rounded[1], fact_value=rounded[2],
+                             note=f"Looks like a rounded {rounded[2]} ({rounded[1]}). Fine if you said \u201cabout\u201d.")
+            else:
+                near = min(pool, key=lambda k: abs(k[0] - value) / max(abs(k[0]), 1e-9), default=None)
+                close = near is not None and abs(near[0] - value) / max(abs(near[0]), 1e-9) <= 0.15
+                entry.update(status="unverified", fact_id=near[2] if close else "", fact_value=near[3] if close else "",
+                             note=(f"Not on the fact sheet. The closest fact is {near[3]} ({near[2]})." if close
+                                   else "Not on the fact sheet. Cut it, or verify it against a primary source."))
+            flags.append(entry)
+    unverified = sum(1 for f in flags if f["status"] == "unverified")
+    return {"checked": checked, "matched": matched, "unverified": unverified, "rounded": len(flags) - unverified, "flags": flags,
+            "summary": (f"{checked} spoken number(s) checked: {matched} match the fact sheet exactly, "
+                        f"{len(flags) - unverified} look rounded, {unverified} are not on the fact sheet.")}
+
+
+def caption_chunks(segments: list[dict], start: float, end: float, max_words: int = 5) -> list[dict]:
+    """Short on-screen captions for a clip, timed from the transcript (times relative to the clip start)."""
+    chunks = []
+    for segment in segments:
+        if segment["end"] <= start or segment["start"] >= end:
+            continue
+        words = segment["text"].split()
+        if not words:
+            continue
+        groups = [words[i:i + max_words] for i in range(0, len(words), max_words)]
+        span = segment["end"] - segment["start"]
+        cursor = segment["start"]
+        for group in groups:
+            length = span * len(group) / len(words)
+            a, b = max(cursor, start), min(cursor + length, end)
+            if b - a > 0.05:
+                chunks.append({"start": round(a - start, 2), "end": round(b - start, 2), "text": " ".join(group)})
+            cursor += length
+    return chunks

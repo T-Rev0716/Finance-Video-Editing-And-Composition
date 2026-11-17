@@ -8,3 +8,5 @@ projects/*
 *.zip
 .venv/
 venv/
+assets/
+data/learning_log.json

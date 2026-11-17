@@ -147,3 +147,37 @@ def latest_report() -> dict | None:
         except (ValueError, OSError):
             continue  # skip a broken file and try the next newest
     return None
+
+
+class RadarImportError(ValueError):
+    """Shown to the user."""
+
+
+def import_latest_radar(source_dir: str) -> dict:
+    """Copy the newest report from the topic-radar folder into reports/."""
+    import shutil
+    source = Path((source_dir or "").strip().strip('"')).expanduser()
+    if not source.is_dir():
+        raise RadarImportError(f"The topic radar folder was not found: {source}. Set it in Settings.")
+
+    def sort_key(path: Path):
+        match = _DATE_IN_NAME.search(path.name)
+        return (match.group(1) if match else "", path.stat().st_mtime)
+
+    candidates = sorted(source.glob("*.json"), key=sort_key, reverse=True)
+    if not candidates:
+        raise RadarImportError(f"No .json reports in {source}.")
+    newest = candidates[0]
+    try:
+        report = load_report(newest)
+    except (ValueError, OSError) as exc:
+        raise RadarImportError(f"{newest.name} could not be read as a report: {exc}") from None
+    folder = config.reports_dir()
+    folder.mkdir(parents=True, exist_ok=True)
+    target = folder / newest.name
+    if target.exists() and target.read_bytes() == newest.read_bytes():
+        status = "already_current"
+    else:
+        shutil.copyfile(newest, target)
+        status = "imported"
+    return {"status": status, "file": newest.name, "themes": len(report["themes"]), "date": report["date"], "source": str(source)}
