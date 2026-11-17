@@ -31,7 +31,12 @@ python app.py
 ```
 
 Your browser opens at <http://127.0.0.1:8000>. To stop the app, press Ctrl+C in the window
-where it is running. You can also double-click `run.bat`.
+where it is running.
+
+**Easier:** double-click `run.bat`. It finds Python even when it is not on PATH and installs
+the packages the first time. To get a Desktop icon, double-click
+`Create Desktop Shortcut.bat` once; after that, open **Video Prep Studio** from your Desktop.
+Don't move the project folder afterwards (or just run the shortcut file again).
 
 Then:
 
