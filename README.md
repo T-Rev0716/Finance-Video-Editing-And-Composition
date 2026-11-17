@@ -16,6 +16,18 @@ video and 3-5 TikTok clips:
 7. **Compliance checklist** and a ready-to-paste **YouTube description** with sources and
    the disclaimer.
 
+And a creator studio around that package:
+
+- **Recording cards** you rewrite in your own voice, with the sourced numbers pinned to each
+  card, a camera-line recording view, and chapter / `.edl` / `.fcpxml` exports.
+- **Visual asset board**: drop local files onto scenes, track what is missing, reuse clips
+  across episodes.
+- **Thumbnail workshop** with a phone-size preview, and **explanation graphics** (animated
+  line reveal, highlighted date, comparison card, flow diagram).
+- **"What changed since I recorded?"**: freeze the facts, re-check later, decide fact by fact.
+- **Learning log** of what you published and how it did.
+- **Local post-production**: transcription, spoken fact-check, dead-air stripping, 9:16 shorts.
+
 It runs on your own computer. Nothing is uploaded anywhere except the data requests listed
 under [Where the numbers come from](#where-the-numbers-come-from) and, if you add a key, the
 wording request to the LLM.
@@ -50,10 +62,123 @@ Generating takes roughly 30-60 seconds without an LLM key and a couple of minute
 ## See a real run first
 
 `examples/demo-run/` is an actual package generated on 2026-11-17 from live FRED data for the
-topic "Mortgage rates back above 7% as the 10-year Treasury yield tops 5%": six charts in
-both sizes, a 28-item fact sheet, outline, shot list, titles, description, compliance
-checklist and a clip plan. It was made **without** an LLM key, so the wording is the built-in
-templates. `examples/screenshots/` shows the app during that run.
+topic "Mortgage rates back above 7% as the 10-year Treasury yield tops 5%": six charts, a
+28-item fact sheet, recording cards, asset board, two thumbnails, four explanation graphics
+(including the `.mp4` reveal) and a learning-log entry. It was made **without** an LLM key, so
+the wording is the built-in templates, and the presenter photo is a placeholder shape.
+`examples/screenshots/` shows the app during that run.
+
+## Creator studio
+
+### Recording cards (tab: Recording cards)
+
+One large card per outline section. Each card has:
+
+- **Main point**, editable in your own words. Edits save as you type.
+- **Pinned essential numbers**: the exact verified values, their dates and source links.
+  They are stored separately from the wording, so rewriting a card never loses them. Click a
+  pinned number to insert it at the cursor.
+- **Live checks**: every edit runs the number guard and the compliance scan. A digit that is
+  not on the fact sheet, or a phrase that reads like advice, gets a warning under the card.
+  The app warns; it never rewrites what you typed.
+- **Pronunciation and delivery notes**, and a preview of the card's chart, headline or B-roll.
+- Reorder (drag the handle, or the arrow buttons), mark `Not recorded` / `Recorded` /
+  `Needs another take`, and **Undo / Redo** (50 steps, wording and pinned sources included).
+
+**Launch recording view** docks the active card at the top-centre of the screen, under your
+webcam. Press `Space` when you hit record, then:
+
+| Key | What it does |
+| --- | --- |
+| `Space` | Next card. Logs the timestamp and marks the card you just finished as recorded. |
+| `R` | Redo this card. Flags the take, marks the card "needs another take", starts a new take. |
+| `Esc` | Finish and save the cue log. |
+
+After a take, export **YouTube chapters**, a CMX3600 **`.edl`** and an **`.fcpxml`** from the
+links at the top of the tab. Flagged takes are left out of the timelines.
+
+### Visual asset board (tab: Asset board)
+
+Every scene in the shot list gets a slot. Charts are linked automatically. For headlines and
+B-roll, drag a `.mp4 .mov .webm .png .jpg .gif` from your computer onto the scene (or browse).
+The bar at the top reads "X of Y scene visuals ready - Z missing"; tick **Missing only** to
+see what is left. Tick **Save to reusable library** to keep an intro or evergreen clip for
+later episodes, and **Pick from library** to drop one in. Files are copied into the project's
+`assets/` folder; nothing is uploaded anywhere.
+
+### Thumbnail workshop (tab: Titles & thumbnails)
+
+Four 1280x720 layouts (chart hero + host, split comparison, big stat badge, minimal
+editorial) in four colour themes. Upload a few photos of yourself once (a transparent PNG
+cutout works best), pick a chart or a background image, and type a headline of four words or
+fewer. Type `{F1}` to drop in a verified number; any other number, or advice-style wording,
+is refused. Every thumbnail is shown full size with **Download PNG** and at **phone-feed size
+(168x94)** beside your title and channel name, with the measured height of the headline
+letters at that size. Save a layout + colour + photo combination as a named preset.
+
+### Explanation graphics (tab: Charts & graphics)
+
+Built from the same data as the charts, in 1920x1080 and 1080x1920, with the source line:
+
+1. **Line-chart reveal**: the line draws in left to right, then holds on the final value
+   (5 seconds, `.mp4` with ffmpeg, half-size `.gif` without).
+2. **Highlighted date + callout**: pick the peak, the low, the latest value or a date; the
+   chart is redrawn with an event line, arrow and label. The axes and scale do not change.
+3. **Side-by-side comparison**: two facts, or one series on two dates.
+4. **Mechanism flow** (A -> B -> C): three or four boxes; `{F1}` puts a verified number in a box.
+
+### What changed since I recorded? (tab: Fact sheet)
+
+**Freeze facts now** saves the facts and the last observation of every data file (it also
+happens automatically the first time you mark a card recorded). **Check for changes**
+re-fetches everything into a `staging/` folder and lists each fact whose value, date or
+revision changed, with every card, chart, graphic, thumbnail and description line that uses
+it. For each fact you choose:
+
+- **Keep frozen as-recorded value**: a date note is added to the affected cards and to the
+  description.
+- **Accept new value**: the fact sheet and charts are updated and the affected cards are
+  flagged "needs another take".
+
+Your card wording is never rewritten either way, and the package as it stood is copied to
+`versions/` first.
+
+### Learning log (tab: Learning log)
+
+One record per episode: hook, final title, thumbnail layout, topic family, open-lane or not,
+minutes spent, and the results you enter after publishing. The summary shows counts and
+medians of your own episodes. Anything based on fewer than eight episodes is labelled
+**TENTATIVE - small sample size (N episodes)**. There is no predicted or "viral" score.
+
+### Local post-production (tab: Clip plan)
+
+- Add the recording (`.mp4 .mov .mkv .wav .mp3`) by upload or by pasting its path, or upload
+  a `.srt` / `.txt` transcript.
+- **Transcribe on this computer** uses `faster-whisper` (GPU if you have one).
+- **Spoken fact-check**: every number you said is compared with the fact sheet. Exact
+  matches pass; rounded versions ("about 7 percent" for 7.11%) are listed as rounded;
+  anything else is flagged with its timestamp so you can cut or verify it.
+- **Strip dead air** removes silences longer than 0.45 s (adjustable) into a new file; the
+  original is never touched.
+- **Export 9:16 Short** per planned clip: chart on top, camera crop below, captions burned in.
+
+### Optional tools
+
+None of these are required. The app says what is missing and falls back.
+
+| Tool | Used for | Without it |
+| --- | --- | --- |
+| [ffmpeg](https://ffmpeg.org/download.html) on PATH | `.mp4` reveal animations, dead-air cuts, 9:16 shorts | Reveal becomes a `.gif`; dead air works for `.wav` only (otherwise a cut list); shorts export the captions `.srt` and cut times |
+| `pip install faster-whisper` | Local transcription | Upload an `.srt` or `.txt` instead |
+| [Ollama](https://ollama.com/) | Free local wording | Built-in templates (or the Anthropic API) |
+
+**Local Ollama wording:** in Settings choose *Local Ollama* as the wording engine and enter
+the exact model tag from `ollama list`. If the tag is left blank, the app uses the first
+installed model with "qwen" in its name. Local models go through exactly the same number
+guard and compliance checks as any other engine.
+
+**Topic radar:** the *Import latest topic radar* button on the Topics page copies the newest
+report from the folder named in Settings.
 
 ## Keys (all optional)
 
@@ -151,17 +276,26 @@ Everything is stored locally, one folder per video:
 ```
 projects/2026-11-17_mortgage-rates-back-above-7/
   project.json                 everything, machine-readable
-  fact_sheet.md
-  outline.md
-  shot_list.md                 includes the Higgsfield prompts
-  titles_and_thumbnails.md
-  youtube_description.txt
-  compliance_checklist.md
-  clip_plan.md                 after you upload a transcript
-  transcript.srt
-  charts/chart_01_..._1920x1080.png, chart_01_..._1080x1920.png, ...
-  data/MORTGAGE30US.csv, ...   the raw numbers behind the charts
+  fact_sheet.md, outline.md, shot_list.md, titles_and_thumbnails.md
+  youtube_description.txt, compliance_checklist.md, clip_plan.md
+  recording_cards.json         your edited cards, undo history and cue log
+  asset_board.json             which file fills which scene
+  frozen_facts.json            the facts as recorded
+  fact_changes.json            the latest change report
+  learning_log.json
+  charts/                      PNGs plus the plotted data of each chart (.json)
+  data/                        the raw numbers behind the charts (.csv)
+  assets/                      files you imported for scenes
+  thumbnails/                  thumb_01.png, thumb_01_phone.png, ...
+  graphics/                    explanation graphics
+  timeline/                    chapters.txt, timeline.edl, timeline.fcpxml
+  shorts/                      9:16 exports and caption files
+  versions/                    the package as it stood before each accepted change
+  recording/, staging/         raw recording and re-fetch scratch area (left out of the ZIP)
 ```
+
+Shared across episodes, next to `app.py`: `assets/hosts/` (your photos), `assets/library/`
+(reusable clips), `assets/thumbnail_presets.json` and `data/learning_log.json`.
 
 ## Tests
 
@@ -169,15 +303,23 @@ projects/2026-11-17_mortgage-rates-back-above-7/
 python -m pytest
 ```
 
-116 tests, none of which use the network. They cover the data-fetch functions (parsing,
+208 tests, none of which use the network. They cover the data-fetch functions (parsing,
 key and no-key paths, fallbacks, error handling), chart rendering (exact pixel sizes, both
 orientations, every chart kind), the number guard, compliance rules, the clip planner, the
-full pipeline and the web API.
+full pipeline and the web API, plus the studio features: recording-card edits, undo and
+number guard, asset-board slots and library, thumbnail layouts and phone-preview data,
+explanation graphics, fact-freeze diffing, learning-log tentative labels, the spoken
+fact-check and the Ollama number guard. Tests that need ffmpeg run only where it is installed.
 
 ## Good to know
 
 - **S&P 500 history:** FRED currently serves only about one year of S&P 500 closes, so the
   S&P chart covers a year. The Nasdaq Composite chart goes back further.
+- **Projects made before the studio upgrade** still open. Their cards and asset board work;
+  thumbnails and graphics that need a chart ask you to generate the project again, because
+  older projects did not save each chart's plotted data.
+- **Timeline exports** describe your raw recording (times come from the keys you pressed).
+  The `.fcpxml` is written to the FCPXML 1.9 format; relink the media if your editor asks.
 - **Gold:** FRED no longer carries a daily gold price. The gold chart uses the BLS export
   price index for gold, which is labelled as an index, not a dollar price.
 - **Fed meeting dates** come from `data/fomc_meetings.json`, which holds the 2026 calendar.
@@ -193,23 +335,32 @@ full pipeline and the web API.
 ## Code map
 
 ```
-app.py                 start here: python app.py
-vps/server.py          web API (FastAPI)
-vps/pipeline.py        the Generate button, end to end
-vps/catalog.py         series, charts and topic families (configuration, no numbers)
-vps/topics.py          topic -> which charts
-vps/sources/           FRED, BLS, Treasury, SEC EDGAR, shared HTTP layer
-vps/builder.py         fetch data, draw charts, build the fact sheet
-vps/facts.py           fact sentences, built by code
-vps/charts.py          chart rendering (matplotlib)
-vps/wording.py         built-in template wording
-vps/voice.py           plain-English lines and B-roll ideas for the templates
-vps/llm.py             optional LLM wording (Anthropic API)
-vps/numbers.py         the number guard
-vps/package.py         outline, shot list, titles, description
-vps/compliance.py      checklist rules
-vps/clips.py           transcript -> clip plan
-vps/projects.py        project folders and ZIP export
-web/                   the front end (plain HTML, CSS, JavaScript)
+app.py                   start here: python app.py
+vps/server.py            web API (FastAPI)
+vps/pipeline.py          the Generate button, end to end
+vps/catalog.py           series, charts and topic families (configuration, no numbers)
+vps/topics.py            topic -> which charts
+vps/sources/             FRED, BLS, Treasury, SEC EDGAR, shared HTTP layer
+vps/builder.py           fetch data, draw charts, build the fact sheet
+vps/facts.py             fact sentences, built by code
+vps/charts.py            chart rendering (matplotlib)
+vps/wording.py           built-in template wording
+vps/voice.py             plain-English lines and B-roll ideas for the templates
+vps/llm.py               optional LLM wording (Anthropic API or local Ollama)
+vps/numbers.py           the number guard
+vps/package.py           outline, shot list, titles, description
+vps/compliance.py        checklist rules
+vps/clips.py             transcript -> clip plan, spoken fact-check, captions
+vps/projects.py          project folders and ZIP export
+vps/recording_cards.py   editable cards, pinned facts, undo/redo, cue log
+vps/timeline.py          YouTube chapters, .edl, .fcpxml
+vps/asset_board.py       scene slots, file import, reusable library
+vps/thumbnails.py        thumbnail layouts, host photos, presets, phone preview
+vps/graphics.py          reveal animation, highlight, comparison card, flow diagram
+vps/fact_diff.py         freeze facts, re-fetch, diff, apply choices
+vps/learning_log.py      per-episode log and evidence summary
+vps/transcribe.py        faster-whisper, dead-air stripping, 9:16 export
+vps/media.py             ffmpeg / ffprobe helpers
+web/                     the front end (plain HTML, CSS, JavaScript)
 tests/
 ```

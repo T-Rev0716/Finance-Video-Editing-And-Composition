@@ -245,7 +245,7 @@ def test_observations_are_plain_medians_of_what_was_logged():
     summary = learning_log.summarize(records)
     by_title = {o["title"]: o for o in summary["observations"]}
     layout = by_title["Thumbnail layout with the highest click-through"]
-    assert "'split_comparison': 9.0 % median click-through rate across 1 episode" in layout["text"] and layout["n"] == 3
+    assert "'split_comparison': 9.0% median click-through rate across 1 episode" in layout["text"] and layout["n"] == 3
     assert "'question': 400 seconds" in by_title["Hook structure with the longest average view"]["text"]
     assert "Open lane" in by_title["Open-lane topics vs crowded topics"]["text"]
     assert [e["project_id"] for e in summary["episodes"]] == ["p4", "p3", "p2", "p1", "p0"], "newest first"

@@ -1,0 +1,1553 @@
+{
+  "version": 1,
+  "cards": [
+    {
+      "id": "hook",
+      "group": "Hook (0-15 s)",
+      "title": "Hook (0-15 s)",
+      "text": "Okay, mortgage rates. Here is what nobody tells you. 7.11%",
+      "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. [CHART 1]\n- That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).\n- Ask the camera: What actually sets your mortgage rate, and what does this do to a monthly payment?",
+      "fact_ids": [
+        "F1",
+        "F2"
+      ],
+      "pronunciation": "Pause one beat before the chart.",
+      "visuals": [
+        {
+          "shot_n": 2,
+          "kind": "CHART",
+          "n": 1
+        },
+        {
+          "shot_n": 3,
+          "kind": "B-ROLL",
+          "n": 1
+        }
+      ],
+      "status": "recorded",
+      "flags": []
+    },
+    {
+      "id": "what_happened",
+      "group": "Here's what happened (explain it like I'm 12)",
+      "title": "Here's what happened (explain it like I'm 12)",
+      "text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+      "original_text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+      "fact_ids": [
+        "F3",
+        "F26",
+        "F27"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 5,
+          "kind": "HEADLINE",
+          "n": 1
+        },
+        {
+          "shot_n": 6,
+          "kind": "HEADLINE",
+          "n": 2
+        }
+      ],
+      "status": "recorded",
+      "flags": []
+    },
+    {
+      "id": "why_1",
+      "group": "Why it happened - cause 1",
+      "title": "Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.",
+      "text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+      "original_text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+      "fact_ids": [
+        "F4",
+        "F5"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 8,
+          "kind": "CHART",
+          "n": 1
+        },
+        {
+          "shot_n": 9,
+          "kind": "B-ROLL",
+          "n": 2
+        }
+      ],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "why_2",
+      "group": "Why it happened - cause 2",
+      "title": "Why it happened 2: Price plus rate is what sets the monthly payment.",
+      "text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+      "original_text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+      "fact_ids": [
+        "F7",
+        "F8"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 11,
+          "kind": "CHART",
+          "n": 3
+        }
+      ],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "why_3",
+      "group": "Why it happened - cause 3",
+      "title": "Why it happened 3: The 10-year is the benchmark that long-term loans are priced off.",
+      "text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+      "original_text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+      "fact_ids": [
+        "F6",
+        "F10"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 13,
+          "kind": "CHART",
+          "n": 5
+        }
+      ],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "means_mortgage",
+      "group": "What it means for you",
+      "title": "What it means for you: Mortgage",
+      "text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+      "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+      "fact_ids": [
+        "F1",
+        "F16"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 15,
+          "kind": "B-ROLL",
+          "n": 3
+        }
+      ],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "means_job",
+      "group": "What it means for you",
+      "title": "What it means for you: Job",
+      "text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+      "original_text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+      "fact_ids": [
+        "F17",
+        "F18"
+      ],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "means_groceries",
+      "group": "What it means for you",
+      "title": "What it means for you: Groceries",
+      "text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+      "original_text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+      "fact_ids": [
+        "F20",
+        "F21"
+      ],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "means_retirement",
+      "group": "What it means for you",
+      "title": "What it means for you: 401(k)",
+      "text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+      "original_text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+      "fact_ids": [
+        "F23",
+        "F24"
+      ],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "watch_next",
+      "group": "What to watch next",
+      "title": "What to watch next",
+      "text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+      "original_text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+      "fact_ids": [],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "closing",
+      "group": "Closing line + subscribe",
+      "title": "Closing line + subscribe",
+      "text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+      "original_text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+      "fact_ids": [
+        "F1"
+      ],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    }
+  ],
+  "undo": [
+    {
+      "label": "Edit Hook (0-15 s)",
+      "cards": [
+        {
+          "id": "hook",
+          "group": "Hook (0-15 s)",
+          "title": "Hook (0-15 s)",
+          "text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. [CHART 1]\n- That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).\n- Ask the camera: What actually sets your mortgage rate, and what does this do to a monthly payment?",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. [CHART 1]\n- That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).\n- Ask the camera: What actually sets your mortgage rate, and what does this do to a monthly payment?",
+          "fact_ids": [
+            "F1",
+            "F2"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 2,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 3,
+              "kind": "B-ROLL",
+              "n": 1
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "what_happened",
+          "group": "Here's what happened (explain it like I'm 12)",
+          "title": "Here's what happened (explain it like I'm 12)",
+          "text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "original_text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "fact_ids": [
+            "F3",
+            "F26",
+            "F27"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 5,
+              "kind": "HEADLINE",
+              "n": 1
+            },
+            {
+              "shot_n": 6,
+              "kind": "HEADLINE",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_1",
+          "group": "Why it happened - cause 1",
+          "title": "Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.",
+          "text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "original_text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "fact_ids": [
+            "F4",
+            "F5"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 8,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 9,
+              "kind": "B-ROLL",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_2",
+          "group": "Why it happened - cause 2",
+          "title": "Why it happened 2: Price plus rate is what sets the monthly payment.",
+          "text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "original_text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "fact_ids": [
+            "F7",
+            "F8"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 11,
+              "kind": "CHART",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_3",
+          "group": "Why it happened - cause 3",
+          "title": "Why it happened 3: The 10-year is the benchmark that long-term loans are priced off.",
+          "text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "original_text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "fact_ids": [
+            "F6",
+            "F10"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 13,
+              "kind": "CHART",
+              "n": 5
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_mortgage",
+          "group": "What it means for you",
+          "title": "What it means for you: Mortgage",
+          "text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "fact_ids": [
+            "F1",
+            "F16"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 15,
+              "kind": "B-ROLL",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_job",
+          "group": "What it means for you",
+          "title": "What it means for you: Job",
+          "text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "original_text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "fact_ids": [
+            "F17",
+            "F18"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_groceries",
+          "group": "What it means for you",
+          "title": "What it means for you: Groceries",
+          "text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "original_text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "fact_ids": [
+            "F20",
+            "F21"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_retirement",
+          "group": "What it means for you",
+          "title": "What it means for you: 401(k)",
+          "text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "original_text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "fact_ids": [
+            "F23",
+            "F24"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "watch_next",
+          "group": "What to watch next",
+          "title": "What to watch next",
+          "text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "original_text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "fact_ids": [],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "closing",
+          "group": "Closing line + subscribe",
+          "title": "Closing line + subscribe",
+          "text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "original_text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "fact_ids": [
+            "F1"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        }
+      ]
+    },
+    {
+      "label": "Edit Hook (0-15 s)",
+      "cards": [
+        {
+          "id": "hook",
+          "group": "Hook (0-15 s)",
+          "title": "Hook (0-15 s)",
+          "text": "Okay, mortgage rates. Here is what nobody tells you, and it could hit 9.9% soon.",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. [CHART 1]\n- That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).\n- Ask the camera: What actually sets your mortgage rate, and what does this do to a monthly payment?",
+          "fact_ids": [
+            "F1",
+            "F2"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 2,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 3,
+              "kind": "B-ROLL",
+              "n": 1
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "what_happened",
+          "group": "Here's what happened (explain it like I'm 12)",
+          "title": "Here's what happened (explain it like I'm 12)",
+          "text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "original_text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "fact_ids": [
+            "F3",
+            "F26",
+            "F27"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 5,
+              "kind": "HEADLINE",
+              "n": 1
+            },
+            {
+              "shot_n": 6,
+              "kind": "HEADLINE",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_1",
+          "group": "Why it happened - cause 1",
+          "title": "Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.",
+          "text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "original_text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "fact_ids": [
+            "F4",
+            "F5"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 8,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 9,
+              "kind": "B-ROLL",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_2",
+          "group": "Why it happened - cause 2",
+          "title": "Why it happened 2: Price plus rate is what sets the monthly payment.",
+          "text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "original_text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "fact_ids": [
+            "F7",
+            "F8"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 11,
+              "kind": "CHART",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_3",
+          "group": "Why it happened - cause 3",
+          "title": "Why it happened 3: The 10-year is the benchmark that long-term loans are priced off.",
+          "text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "original_text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "fact_ids": [
+            "F6",
+            "F10"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 13,
+              "kind": "CHART",
+              "n": 5
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_mortgage",
+          "group": "What it means for you",
+          "title": "What it means for you: Mortgage",
+          "text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "fact_ids": [
+            "F1",
+            "F16"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 15,
+              "kind": "B-ROLL",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_job",
+          "group": "What it means for you",
+          "title": "What it means for you: Job",
+          "text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "original_text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "fact_ids": [
+            "F17",
+            "F18"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_groceries",
+          "group": "What it means for you",
+          "title": "What it means for you: Groceries",
+          "text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "original_text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "fact_ids": [
+            "F20",
+            "F21"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_retirement",
+          "group": "What it means for you",
+          "title": "What it means for you: 401(k)",
+          "text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "original_text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "fact_ids": [
+            "F23",
+            "F24"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "watch_next",
+          "group": "What to watch next",
+          "title": "What to watch next",
+          "text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "original_text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "fact_ids": [],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "closing",
+          "group": "Closing line + subscribe",
+          "title": "Closing line + subscribe",
+          "text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "original_text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "fact_ids": [
+            "F1"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        }
+      ]
+    },
+    {
+      "label": "Edit Hook (0-15 s)",
+      "cards": [
+        {
+          "id": "hook",
+          "group": "Hook (0-15 s)",
+          "title": "Hook (0-15 s)",
+          "text": "Okay, mortgage rates. Here is what nobody tells you. 7.11%",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. [CHART 1]\n- That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).\n- Ask the camera: What actually sets your mortgage rate, and what does this do to a monthly payment?",
+          "fact_ids": [
+            "F1",
+            "F2"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 2,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 3,
+              "kind": "B-ROLL",
+              "n": 1
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "what_happened",
+          "group": "Here's what happened (explain it like I'm 12)",
+          "title": "Here's what happened (explain it like I'm 12)",
+          "text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "original_text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "fact_ids": [
+            "F3",
+            "F26",
+            "F27"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 5,
+              "kind": "HEADLINE",
+              "n": 1
+            },
+            {
+              "shot_n": 6,
+              "kind": "HEADLINE",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_1",
+          "group": "Why it happened - cause 1",
+          "title": "Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.",
+          "text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "original_text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "fact_ids": [
+            "F4",
+            "F5"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 8,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 9,
+              "kind": "B-ROLL",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_2",
+          "group": "Why it happened - cause 2",
+          "title": "Why it happened 2: Price plus rate is what sets the monthly payment.",
+          "text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "original_text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "fact_ids": [
+            "F7",
+            "F8"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 11,
+              "kind": "CHART",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_3",
+          "group": "Why it happened - cause 3",
+          "title": "Why it happened 3: The 10-year is the benchmark that long-term loans are priced off.",
+          "text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "original_text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "fact_ids": [
+            "F6",
+            "F10"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 13,
+              "kind": "CHART",
+              "n": 5
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_mortgage",
+          "group": "What it means for you",
+          "title": "What it means for you: Mortgage",
+          "text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "fact_ids": [
+            "F1",
+            "F16"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 15,
+              "kind": "B-ROLL",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_job",
+          "group": "What it means for you",
+          "title": "What it means for you: Job",
+          "text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "original_text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "fact_ids": [
+            "F17",
+            "F18"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_groceries",
+          "group": "What it means for you",
+          "title": "What it means for you: Groceries",
+          "text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "original_text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "fact_ids": [
+            "F20",
+            "F21"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_retirement",
+          "group": "What it means for you",
+          "title": "What it means for you: 401(k)",
+          "text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "original_text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "fact_ids": [
+            "F23",
+            "F24"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "watch_next",
+          "group": "What to watch next",
+          "title": "What to watch next",
+          "text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "original_text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "fact_ids": [],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "closing",
+          "group": "Closing line + subscribe",
+          "title": "Closing line + subscribe",
+          "text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "original_text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "fact_ids": [
+            "F1"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        }
+      ]
+    },
+    {
+      "label": "Mark recorded",
+      "cards": [
+        {
+          "id": "hook",
+          "group": "Hook (0-15 s)",
+          "title": "Hook (0-15 s)",
+          "text": "Okay, mortgage rates. Here is what nobody tells you. 7.11%",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. [CHART 1]\n- That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).\n- Ask the camera: What actually sets your mortgage rate, and what does this do to a monthly payment?",
+          "fact_ids": [
+            "F1",
+            "F2"
+          ],
+          "pronunciation": "Pause one beat before the chart.",
+          "visuals": [
+            {
+              "shot_n": 2,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 3,
+              "kind": "B-ROLL",
+              "n": 1
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "what_happened",
+          "group": "Here's what happened (explain it like I'm 12)",
+          "title": "Here's what happened (explain it like I'm 12)",
+          "text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "original_text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "fact_ids": [
+            "F3",
+            "F26",
+            "F27"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 5,
+              "kind": "HEADLINE",
+              "n": 1
+            },
+            {
+              "shot_n": 6,
+              "kind": "HEADLINE",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_1",
+          "group": "Why it happened - cause 1",
+          "title": "Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.",
+          "text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "original_text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "fact_ids": [
+            "F4",
+            "F5"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 8,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 9,
+              "kind": "B-ROLL",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_2",
+          "group": "Why it happened - cause 2",
+          "title": "Why it happened 2: Price plus rate is what sets the monthly payment.",
+          "text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "original_text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "fact_ids": [
+            "F7",
+            "F8"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 11,
+              "kind": "CHART",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_3",
+          "group": "Why it happened - cause 3",
+          "title": "Why it happened 3: The 10-year is the benchmark that long-term loans are priced off.",
+          "text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "original_text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "fact_ids": [
+            "F6",
+            "F10"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 13,
+              "kind": "CHART",
+              "n": 5
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_mortgage",
+          "group": "What it means for you",
+          "title": "What it means for you: Mortgage",
+          "text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "fact_ids": [
+            "F1",
+            "F16"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 15,
+              "kind": "B-ROLL",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_job",
+          "group": "What it means for you",
+          "title": "What it means for you: Job",
+          "text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "original_text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "fact_ids": [
+            "F17",
+            "F18"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_groceries",
+          "group": "What it means for you",
+          "title": "What it means for you: Groceries",
+          "text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "original_text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "fact_ids": [
+            "F20",
+            "F21"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_retirement",
+          "group": "What it means for you",
+          "title": "What it means for you: 401(k)",
+          "text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "original_text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "fact_ids": [
+            "F23",
+            "F24"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "watch_next",
+          "group": "What to watch next",
+          "title": "What to watch next",
+          "text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "original_text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "fact_ids": [],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "closing",
+          "group": "Closing line + subscribe",
+          "title": "Closing line + subscribe",
+          "text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "original_text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "fact_ids": [
+            "F1"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        }
+      ]
+    },
+    {
+      "label": "Mark needs another take",
+      "cards": [
+        {
+          "id": "hook",
+          "group": "Hook (0-15 s)",
+          "title": "Hook (0-15 s)",
+          "text": "Okay, mortgage rates. Here is what nobody tells you. 7.11%",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. [CHART 1]\n- That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).\n- Ask the camera: What actually sets your mortgage rate, and what does this do to a monthly payment?",
+          "fact_ids": [
+            "F1",
+            "F2"
+          ],
+          "pronunciation": "Pause one beat before the chart.",
+          "visuals": [
+            {
+              "shot_n": 2,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 3,
+              "kind": "B-ROLL",
+              "n": 1
+            }
+          ],
+          "status": "recorded",
+          "flags": []
+        },
+        {
+          "id": "what_happened",
+          "group": "Here's what happened (explain it like I'm 12)",
+          "title": "Here's what happened (explain it like I'm 12)",
+          "text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "original_text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "fact_ids": [
+            "F3",
+            "F26",
+            "F27"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 5,
+              "kind": "HEADLINE",
+              "n": 1
+            },
+            {
+              "shot_n": 6,
+              "kind": "HEADLINE",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_1",
+          "group": "Why it happened - cause 1",
+          "title": "Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.",
+          "text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "original_text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "fact_ids": [
+            "F4",
+            "F5"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 8,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 9,
+              "kind": "B-ROLL",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_2",
+          "group": "Why it happened - cause 2",
+          "title": "Why it happened 2: Price plus rate is what sets the monthly payment.",
+          "text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "original_text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "fact_ids": [
+            "F7",
+            "F8"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 11,
+              "kind": "CHART",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_3",
+          "group": "Why it happened - cause 3",
+          "title": "Why it happened 3: The 10-year is the benchmark that long-term loans are priced off.",
+          "text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "original_text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "fact_ids": [
+            "F6",
+            "F10"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 13,
+              "kind": "CHART",
+              "n": 5
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_mortgage",
+          "group": "What it means for you",
+          "title": "What it means for you: Mortgage",
+          "text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "fact_ids": [
+            "F1",
+            "F16"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 15,
+              "kind": "B-ROLL",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_job",
+          "group": "What it means for you",
+          "title": "What it means for you: Job",
+          "text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "original_text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "fact_ids": [
+            "F17",
+            "F18"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_groceries",
+          "group": "What it means for you",
+          "title": "What it means for you: Groceries",
+          "text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "original_text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "fact_ids": [
+            "F20",
+            "F21"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_retirement",
+          "group": "What it means for you",
+          "title": "What it means for you: 401(k)",
+          "text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "original_text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "fact_ids": [
+            "F23",
+            "F24"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "watch_next",
+          "group": "What to watch next",
+          "title": "What to watch next",
+          "text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "original_text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "fact_ids": [],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "closing",
+          "group": "Closing line + subscribe",
+          "title": "Closing line + subscribe",
+          "text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "original_text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "fact_ids": [
+            "F1"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        }
+      ]
+    },
+    {
+      "label": "Mark recorded",
+      "cards": [
+        {
+          "id": "hook",
+          "group": "Hook (0-15 s)",
+          "title": "Hook (0-15 s)",
+          "text": "Okay, mortgage rates. Here is what nobody tells you. 7.11%",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. [CHART 1]\n- That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).\n- Ask the camera: What actually sets your mortgage rate, and what does this do to a monthly payment?",
+          "fact_ids": [
+            "F1",
+            "F2"
+          ],
+          "pronunciation": "Pause one beat before the chart.",
+          "visuals": [
+            {
+              "shot_n": 2,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 3,
+              "kind": "B-ROLL",
+              "n": 1
+            }
+          ],
+          "status": "recorded",
+          "flags": []
+        },
+        {
+          "id": "what_happened",
+          "group": "Here's what happened (explain it like I'm 12)",
+          "title": "Here's what happened (explain it like I'm 12)",
+          "text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "original_text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+          "fact_ids": [
+            "F3",
+            "F26",
+            "F27"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 5,
+              "kind": "HEADLINE",
+              "n": 1
+            },
+            {
+              "shot_n": 6,
+              "kind": "HEADLINE",
+              "n": 2
+            }
+          ],
+          "status": "needs_another_take",
+          "flags": []
+        },
+        {
+          "id": "why_1",
+          "group": "Why it happened - cause 1",
+          "title": "Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.",
+          "text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "original_text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+          "fact_ids": [
+            "F4",
+            "F5"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 8,
+              "kind": "CHART",
+              "n": 1
+            },
+            {
+              "shot_n": 9,
+              "kind": "B-ROLL",
+              "n": 2
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_2",
+          "group": "Why it happened - cause 2",
+          "title": "Why it happened 2: Price plus rate is what sets the monthly payment.",
+          "text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "original_text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+          "fact_ids": [
+            "F7",
+            "F8"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 11,
+              "kind": "CHART",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "why_3",
+          "group": "Why it happened - cause 3",
+          "title": "Why it happened 3: The 10-year is the benchmark that long-term loans are priced off.",
+          "text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "original_text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+          "fact_ids": [
+            "F6",
+            "F10"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 13,
+              "kind": "CHART",
+              "n": 5
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_mortgage",
+          "group": "What it means for you",
+          "title": "What it means for you: Mortgage",
+          "text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+          "fact_ids": [
+            "F1",
+            "F16"
+          ],
+          "pronunciation": "",
+          "visuals": [
+            {
+              "shot_n": 15,
+              "kind": "B-ROLL",
+              "n": 3
+            }
+          ],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_job",
+          "group": "What it means for you",
+          "title": "What it means for you: Job",
+          "text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "original_text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+          "fact_ids": [
+            "F17",
+            "F18"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_groceries",
+          "group": "What it means for you",
+          "title": "What it means for you: Groceries",
+          "text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "original_text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+          "fact_ids": [
+            "F20",
+            "F21"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "means_retirement",
+          "group": "What it means for you",
+          "title": "What it means for you: 401(k)",
+          "text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "original_text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+          "fact_ids": [
+            "F23",
+            "F24"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "watch_next",
+          "group": "What to watch next",
+          "title": "What to watch next",
+          "text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "original_text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+          "fact_ids": [],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        },
+        {
+          "id": "closing",
+          "group": "Closing line + subscribe",
+          "title": "Closing line + subscribe",
+          "text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "original_text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+          "fact_ids": [
+            "F1"
+          ],
+          "pronunciation": "",
+          "visuals": [],
+          "status": "unrecorded",
+          "flags": []
+        }
+      ]
+    }
+  ],
+  "redo": [],
+  "cues": [
+    {
+      "card_id": "hook",
+      "start": 0.0,
+      "flagged": false
+    },
+    {
+      "card_id": "what_happened",
+      "start": 0.66,
+      "flagged": true
+    },
+    {
+      "card_id": "what_happened",
+      "start": 1.17,
+      "flagged": false
+    },
+    {
+      "card_id": "why_1",
+      "start": 1.67,
+      "flagged": false
+    }
+  ],
+  "total_seconds": 2.08,
+  "updated": "2026-11-17T04:47:05"
+}

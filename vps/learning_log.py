@@ -122,16 +122,16 @@ def summarize(records: list[dict] | None = None) -> dict:
     if timed:
         observations.append(_observation("Median build time", f"{median(timed):.0f} minutes from prep to finished edit.", len(timed)))
     for title, group_key, metric, unit, noun in (
-        ("Hook structure with the longest average view", "hook_structure", "avg_view_duration_sec", "seconds average view duration", "hook"),
+        ("Hook structure with the longest average view", "hook_structure", "avg_view_duration_sec", " seconds average view duration", "hook"),
         ("Thumbnail layout with the highest click-through", "thumbnail_layout", "ctr_pct", "% median click-through rate", "layout"),
-        ("Topic family with the most 7-day views", "topic_family", "views_7d", "median views after 7 days", "topic family"),
+        ("Topic family with the most 7-day views", "topic_family", "views_7d", " median views after 7 days", "topic family"),
     ):
         found = _best_group(records, group_key, metric)
         if found:
             group, value, in_group, total = found
             shown = f"{value:,.1f}" if metric == "ctr_pct" else f"{value:,.0f}"
             observations.append(_observation(
-                title, f"'{group}': {shown} {unit} across {in_group} episode{'' if in_group == 1 else 's'} with that {noun}.", total))
+                title, f"'{group}': {shown}{unit} across {in_group} episode{'' if in_group == 1 else 's'} with that {noun}.", total))
     lanes = {flag: [r["views_7d"] for r in records if r.get("views_7d") is not None and bool(r.get("open_lane")) is flag]
              for flag in (True, False)}
     if lanes[True] and lanes[False]:

@@ -1,7 +1,7 @@
 {
   "id": "2026-11-17_mortgage-rates-back-above-7-as-the-10-year-treas",
   "topic": "Mortgage rates back above 7% as the 10-year Treasury yield tops 5%",
-  "created": "2026-11-17T02:31:52",
+  "created": "2026-11-17T04:46:54",
   "status": "ready",
   "report_file": "2026-11-16.json",
   "theme": {
@@ -100,6 +100,12 @@
         "1920x1080": "chart_01_mortgage_vs_10y_1920x1080.png",
         "1080x1920": "chart_01_mortgage_vs_10y_1080x1920.png"
       },
+      "spec_file": "chart_01_mortgage_vs_10y.json",
+      "theme": "dark",
+      "series_ids": [
+        "MORTGAGE30US",
+        "DGS10"
+      ],
       "series": [
         {
           "title": "30-year fixed mortgage rate",
@@ -132,6 +138,11 @@
         "1920x1080": "chart_02_mortgage_long_1920x1080.png",
         "1080x1920": "chart_02_mortgage_long_1080x1920.png"
       },
+      "spec_file": "chart_02_mortgage_long.json",
+      "theme": "dark",
+      "series_ids": [
+        "MORTGAGE30US"
+      ],
       "series": [
         {
           "title": "30-year fixed mortgage rate",
@@ -156,6 +167,11 @@
         "1920x1080": "chart_03_home_prices_1920x1080.png",
         "1080x1920": "chart_03_home_prices_1080x1920.png"
       },
+      "spec_file": "chart_03_home_prices.json",
+      "theme": "dark",
+      "series_ids": [
+        "MSPUS"
+      ],
       "series": [
         {
           "title": "Median U.S. home sale price",
@@ -180,6 +196,11 @@
         "1920x1080": "chart_04_ten_year_long_1920x1080.png",
         "1080x1920": "chart_04_ten_year_long_1080x1920.png"
       },
+      "spec_file": "chart_04_ten_year_long.json",
+      "theme": "dark",
+      "series_ids": [
+        "DGS10"
+      ],
       "series": [
         {
           "title": "10-year Treasury yield",
@@ -204,6 +225,12 @@
         "1920x1080": "chart_05_yields_10_2_1920x1080.png",
         "1080x1920": "chart_05_yields_10_2_1080x1920.png"
       },
+      "spec_file": "chart_05_yields_10_2.json",
+      "theme": "dark",
+      "series_ids": [
+        "DGS10",
+        "DGS2"
+      ],
       "series": [
         {
           "title": "10-year Treasury yield",
@@ -236,6 +263,11 @@
         "1920x1080": "chart_06_curve_1920x1080.png",
         "1080x1920": "chart_06_curve_1080x1920.png"
       },
+      "spec_file": "chart_06_curve.json",
+      "theme": "dark",
+      "series_ids": [
+        "T10Y2Y"
+      ],
       "series": [
         {
           "title": "10-year minus 2-year Treasury yield",
@@ -771,15 +803,7 @@
     }
   ],
   "llm_used": false,
-  "manual_checks": {
-    "said_no_advice": false,
-    "said_no_targets": false,
-    "said_disclaimer": true,
-    "verified_news": false,
-    "labelled_ai": false,
-    "youtube_toggle": false,
-    "description_pasted": false
-  },
+  "manual_checks": {},
   "outline": {
     "hook": {
       "title": "Hook (0-15 s)",
@@ -1054,6 +1078,10 @@
       "section": "Hook (0-15 s)",
       "type": "CHART 1",
       "what": "30-year mortgage rate vs 10-year Treasury yield",
+      "ref": {
+        "kind": "CHART",
+        "n": 1
+      },
       "file": "chart_01_mortgage_vs_10y_1920x1080.png",
       "vertical_file": "chart_01_mortgage_vs_10y_1080x1920.png",
       "note": "Real data through Nov 13, 2026. Source is printed on the chart."
@@ -1064,6 +1092,10 @@
       "type": "B-ROLL (AI)",
       "what": "homes and neighborhoods",
       "prompt": "Slow aerial drone shot gliding over a quiet suburban neighborhood at golden hour, rows of similar houses, soft haze, cinematic. Fictional generic scene. No real people, no recognizable faces, no real brands or logos, no readable on-screen text, not a depiction of any real event.",
+      "ref": {
+        "kind": "B-ROLL",
+        "n": 1
+      },
       "label": "ILLUSTRATIVE - AI-generated",
       "blocked": false,
       "note": "Paste the prompt into Higgsfield. Add an on-screen \"Illustrative\" label in the edit."
@@ -1080,6 +1112,10 @@
       "type": "HEADLINE SCREENSHOT",
       "what": "“Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports)",
       "url": "https://themortgagereports.com/mortgage-rates-now/mortgage-rates-today-november-3-2026",
+      "ref": {
+        "kind": "HEADLINE",
+        "n": 1
+      },
       "note": "Screenshot the real page with the outlet's name visible. Do not edit the headline."
     },
     {
@@ -1088,6 +1124,10 @@
       "type": "HEADLINE SCREENSHOT",
       "what": "“Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America)",
       "url": "https://www.mpamag.com/us/mortgage-industry/market-updates/midterm-elections-extend-mortgage-rate-slide-to-three-weeks/596355",
+      "ref": {
+        "kind": "HEADLINE",
+        "n": 2
+      },
       "note": "Screenshot the real page with the outlet's name visible. Do not edit the headline."
     },
     {
@@ -1101,6 +1141,10 @@
       "section": "Why it happened - cause 1",
       "type": "CHART 1",
       "what": "30-year mortgage rate vs 10-year Treasury yield",
+      "ref": {
+        "kind": "CHART",
+        "n": 1
+      },
       "file": "chart_01_mortgage_vs_10y_1920x1080.png",
       "vertical_file": "chart_01_mortgage_vs_10y_1080x1920.png",
       "note": "Real data through Nov 13, 2026. Source is printed on the chart."
@@ -1111,6 +1155,10 @@
       "type": "B-ROLL (AI)",
       "what": "the cost of buying",
       "prompt": "Close-up of a house key resting on a kitchen counter beside a calculator and blank paperwork, soft window light, slow push-in. Fictional generic scene. No real people, no recognizable faces, no real brands or logos, no readable on-screen text, not a depiction of any real event.",
+      "ref": {
+        "kind": "B-ROLL",
+        "n": 2
+      },
       "label": "ILLUSTRATIVE - AI-generated",
       "blocked": false,
       "note": "Paste the prompt into Higgsfield. Add an on-screen \"Illustrative\" label in the edit."
@@ -1126,6 +1174,10 @@
       "section": "Why it happened - cause 2",
       "type": "CHART 3",
       "what": "Median U.S. home sale price",
+      "ref": {
+        "kind": "CHART",
+        "n": 3
+      },
       "file": "chart_03_home_prices_1920x1080.png",
       "vertical_file": "chart_03_home_prices_1080x1920.png",
       "note": "Real data through Q3 2026. Source is printed on the chart."
@@ -1141,6 +1193,10 @@
       "section": "Why it happened - cause 3",
       "type": "CHART 5",
       "what": "10-year vs 2-year Treasury yields",
+      "ref": {
+        "kind": "CHART",
+        "n": 5
+      },
       "file": "chart_05_yields_10_2_1920x1080.png",
       "vertical_file": "chart_05_yields_10_2_1080x1920.png",
       "note": "Real data through Nov 13, 2026. Source is printed on the chart."
@@ -1157,6 +1213,10 @@
       "type": "B-ROLL (AI)",
       "what": "the housing market",
       "prompt": "A 'for sale' style blank yard sign in front of a generic house, shallow depth of field, gentle wind in the trees. Fictional generic scene. No real people, no recognizable faces, no real brands or logos, no readable on-screen text, not a depiction of any real event.",
+      "ref": {
+        "kind": "B-ROLL",
+        "n": 3
+      },
       "label": "ILLUSTRATIVE - AI-generated",
       "blocked": false,
       "note": "Paste the prompt into Higgsfield. Add an on-screen \"Illustrative\" label in the edit."
@@ -1284,7 +1344,7 @@
         "label": "I said the \"education only, not investment advice\" disclaimer out loud.",
         "status": "manual",
         "detail": "",
-        "checked": true
+        "checked": false
       },
       {
         "id": "verified_news",
@@ -1317,6 +1377,701 @@
     ],
     "summary": "review"
   },
+  "asset_board": {
+    "slots": {
+      "1": {
+        "shot_n": 1,
+        "kind": "talking_head",
+        "section": "Hook (0-15 s)",
+        "what": "To camera, high energy: the surprising fact or question.",
+        "required": false,
+        "status": "camera",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "2": {
+        "shot_n": 2,
+        "kind": "chart",
+        "section": "Hook (0-15 s)",
+        "what": "30-year mortgage rate vs 10-year Treasury yield",
+        "required": true,
+        "status": "ready",
+        "file": "charts/chart_01_mortgage_vs_10y_1920x1080.png",
+        "media": "image",
+        "source": "pipeline",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "3": {
+        "shot_n": 3,
+        "kind": "broll",
+        "section": "Hook (0-15 s)",
+        "what": "homes and neighborhoods",
+        "required": true,
+        "status": "ready",
+        "file": "assets/shot_03_broll.png",
+        "media": "image",
+        "source": "upload",
+        "original_name": "broll.png",
+        "label": "ILLUSTRATIVE - AI-generated",
+        "blocked": false,
+        "library_id": "broll.png"
+      },
+      "4": {
+        "shot_n": 4,
+        "kind": "talking_head",
+        "section": "Here's what happened (explain it like I'm 12)",
+        "what": "To camera: the plain-English version.",
+        "required": false,
+        "status": "camera",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "5": {
+        "shot_n": 5,
+        "kind": "headline",
+        "section": "Here's what happened (explain it like I'm 12)",
+        "what": "“Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports)",
+        "required": true,
+        "status": "ready",
+        "file": "assets/shot_05_broll.png",
+        "media": "image",
+        "source": "library",
+        "original_name": "broll.png",
+        "label": "",
+        "blocked": false,
+        "library_id": "broll.png"
+      },
+      "6": {
+        "shot_n": 6,
+        "kind": "headline",
+        "section": "Here's what happened (explain it like I'm 12)",
+        "what": "“Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America)",
+        "required": true,
+        "status": "missing",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "7": {
+        "shot_n": 7,
+        "kind": "talking_head",
+        "section": "Why it happened - cause 1",
+        "what": "Set up cause 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.",
+        "required": false,
+        "status": "camera",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "8": {
+        "shot_n": 8,
+        "kind": "chart",
+        "section": "Why it happened - cause 1",
+        "what": "30-year mortgage rate vs 10-year Treasury yield",
+        "required": true,
+        "status": "ready",
+        "file": "charts/chart_01_mortgage_vs_10y_1920x1080.png",
+        "media": "image",
+        "source": "pipeline",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "9": {
+        "shot_n": 9,
+        "kind": "broll",
+        "section": "Why it happened - cause 1",
+        "what": "the cost of buying",
+        "required": true,
+        "status": "missing",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "ILLUSTRATIVE - AI-generated",
+        "blocked": false
+      },
+      "10": {
+        "shot_n": 10,
+        "kind": "talking_head",
+        "section": "Why it happened - cause 2",
+        "what": "Set up cause 2: Price plus rate is what sets the monthly payment.",
+        "required": false,
+        "status": "camera",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "11": {
+        "shot_n": 11,
+        "kind": "chart",
+        "section": "Why it happened - cause 2",
+        "what": "Median U.S. home sale price",
+        "required": true,
+        "status": "ready",
+        "file": "charts/chart_03_home_prices_1920x1080.png",
+        "media": "image",
+        "source": "pipeline",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "12": {
+        "shot_n": 12,
+        "kind": "talking_head",
+        "section": "Why it happened - cause 3",
+        "what": "Set up cause 3: The 10-year is the benchmark that long-term loans are priced off.",
+        "required": false,
+        "status": "camera",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "13": {
+        "shot_n": 13,
+        "kind": "chart",
+        "section": "Why it happened - cause 3",
+        "what": "10-year vs 2-year Treasury yields",
+        "required": true,
+        "status": "ready",
+        "file": "charts/chart_05_yields_10_2_1920x1080.png",
+        "media": "image",
+        "source": "pipeline",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "14": {
+        "shot_n": 14,
+        "kind": "talking_head",
+        "section": "What it means for you",
+        "what": "To camera: mortgage, job, groceries, 401(k). One beat each.",
+        "required": false,
+        "status": "camera",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "15": {
+        "shot_n": 15,
+        "kind": "broll",
+        "section": "What it means for you",
+        "what": "the housing market",
+        "required": true,
+        "status": "missing",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "ILLUSTRATIVE - AI-generated",
+        "blocked": false
+      },
+      "16": {
+        "shot_n": 16,
+        "kind": "talking_head",
+        "section": "What to watch next",
+        "what": "To camera: the dates and data releases to watch.",
+        "required": false,
+        "status": "camera",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      },
+      "17": {
+        "shot_n": 17,
+        "kind": "talking_head",
+        "section": "Closing line + subscribe",
+        "what": "To camera: closing line, disclaimer, subscribe.",
+        "required": false,
+        "status": "camera",
+        "file": "",
+        "media": "",
+        "source": "",
+        "original_name": "",
+        "label": "",
+        "blocked": false
+      }
+    },
+    "updated": "2026-11-17T04:47:09"
+  },
+  "recording_cards": [
+    {
+      "id": "hook",
+      "group": "Hook (0-15 s)",
+      "title": "Hook (0-15 s)",
+      "text": "Okay, mortgage rates. Here is what nobody tells you. 7.11%",
+      "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. [CHART 1]\n- That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).\n- Ask the camera: What actually sets your mortgage rate, and what does this do to a monthly payment?",
+      "fact_ids": [
+        "F1",
+        "F2"
+      ],
+      "pronunciation": "Pause one beat before the chart.",
+      "visuals": [
+        {
+          "shot_n": 2,
+          "kind": "CHART",
+          "n": 1
+        },
+        {
+          "shot_n": 3,
+          "kind": "B-ROLL",
+          "n": 1
+        }
+      ],
+      "status": "recorded",
+      "flags": []
+    },
+    {
+      "id": "what_happened",
+      "group": "Here's what happened (explain it like I'm 12)",
+      "title": "Here's what happened (explain it like I'm 12)",
+      "text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+      "original_text": "- Plain English: A mortgage rate is the price of borrowing money to buy a home. When it goes up, the exact same house costs more every month.\n- 30-year fixed mortgage rate: over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).\n- [HEADLINE 1] Show the headline: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026” (The Mortgage Reports). It is a news report, so check any number in it before you say it.\n- [HEADLINE 2] Show the headline: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month” (Mortgage Professional America). It is a news report, so check any number in it before you say it.",
+      "fact_ids": [
+        "F3",
+        "F26",
+        "F27"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 5,
+          "kind": "HEADLINE",
+          "n": 1
+        },
+        {
+          "shot_n": 6,
+          "kind": "HEADLINE",
+          "n": 2
+        }
+      ],
+      "status": "recorded",
+      "flags": []
+    },
+    {
+      "id": "why_1",
+      "group": "Why it happened - cause 1",
+      "title": "Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.",
+      "text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+      "original_text": "- Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly. [CHART 1]\n- The 10-year Treasury yield was 5.15% as of Nov 13, 2026.\n- That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 1]",
+      "fact_ids": [
+        "F4",
+        "F5"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 8,
+          "kind": "CHART",
+          "n": 1
+        },
+        {
+          "shot_n": 9,
+          "kind": "B-ROLL",
+          "n": 2
+        }
+      ],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "why_2",
+      "group": "Why it happened - cause 2",
+      "title": "Why it happened 2: Price plus rate is what sets the monthly payment.",
+      "text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+      "original_text": "- Price plus rate is what sets the monthly payment. [CHART 3]\n- The median U.S. home sale price was $393,300 as of Q3 2026.\n- That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 3]",
+      "fact_ids": [
+        "F7",
+        "F8"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 11,
+          "kind": "CHART",
+          "n": 3
+        }
+      ],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "why_3",
+      "group": "Why it happened - cause 3",
+      "title": "Why it happened 3: The 10-year is the benchmark that long-term loans are priced off.",
+      "text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+      "original_text": "- The 10-year is the benchmark that long-term loans are priced off. [CHART 5]\n- 10-year Treasury yield: over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).\n- The 2-year Treasury yield was 4.88% as of Nov 13, 2026.\n- Walk through the chart: point at where the line turns and say what was going on. [CHART 5]",
+      "fact_ids": [
+        "F6",
+        "F10"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 13,
+          "kind": "CHART",
+          "n": 5
+        }
+      ],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "means_mortgage",
+      "group": "What it means for you",
+      "title": "What it means for you: Mortgage",
+      "text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+      "original_text": "- The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.\n- Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).\n- If you already have a fixed-rate mortgage, your payment does not change. This matters if you are buying, refinancing or have an adjustable rate.",
+      "fact_ids": [
+        "F1",
+        "F16"
+      ],
+      "pronunciation": "",
+      "visuals": [
+        {
+          "shot_n": 15,
+          "kind": "B-ROLL",
+          "n": 3
+        }
+      ],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "means_job",
+      "group": "What it means for you",
+      "title": "What it means for you: Job",
+      "text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+      "original_text": "- The unemployment rate was 4.1% as of October 2026.\n- That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).\n- Explain what this means for someone job-hunting or asking for a raise: a tighter market gives workers more leverage, a looser one gives employers more.",
+      "fact_ids": [
+        "F17",
+        "F18"
+      ],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "means_groceries",
+      "group": "What it means for you",
+      "title": "What it means for you: Groceries",
+      "text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+      "original_text": "- Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.\n- That is slower than the 2.1% pace in August 2026.\n- This is the change in average grocery prices across the country. Your own basket can be higher or lower.",
+      "fact_ids": [
+        "F20",
+        "F21"
+      ],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "means_retirement",
+      "group": "What it means for you",
+      "title": "What it means for you: 401(k)",
+      "text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+      "original_text": "- The S&P 500 was 7,417 as of Nov 16, 2026.\n- That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).\n- Most 401(k) stock funds follow the S&P 500. This is a snapshot of where it stands, not a prediction and not a reason to change anything.",
+      "fact_ids": [
+        "F23",
+        "F24"
+      ],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "watch_next",
+      "group": "What to watch next",
+      "title": "What to watch next",
+      "text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+      "original_text": "- Federal Reserve interest rate decision (FOMC): Dec 9, 2026. When the Fed announces whether rates change.\n- Freddie Mac weekly mortgage rate survey: date not fetched. Out every Thursday.\n- Consumer Price Index (CPI) report: date not fetched. The main inflation report.\n- Jobs report (Employment Situation): date not fetched. Unemployment rate and jobs added.\n- Read the dates out loud and tell viewers which one number you will be watching.",
+      "fact_ids": [],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    },
+    {
+      "id": "closing",
+      "group": "Closing line + subscribe",
+      "title": "Closing line + subscribe",
+      "text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+      "original_text": "- One-line recap: The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026. Remind viewers this is education, not advice.\n- Subscribe for plain-English money news, and ask: what should I explain next?",
+      "fact_ids": [
+        "F1"
+      ],
+      "pronunciation": "",
+      "visuals": [],
+      "status": "unrecorded",
+      "flags": []
+    }
+  ],
+  "fact_freeze": {
+    "frozen_at": "2026-11-17T04:47:26",
+    "reason": "manual",
+    "facts": 28
+  },
+  "thumbnail_renders": [
+    {
+      "n": 1,
+      "id": "thumb_01",
+      "file": "thumbnails/thumb_01.png",
+      "phone_file": "thumbnails/thumb_01_phone.png",
+      "width": 1280,
+      "height": 720,
+      "preset": "",
+      "created": "2026-11-17T04:47:12",
+      "phone": {
+        "width": 168,
+        "height": 94,
+        "title": "Mortgage Rates Are Now 7.11%. Here's Why",
+        "channel": "",
+        "headline_px": 12.8,
+        "legible": true,
+        "note": "Headline letters are about 12.8 px tall at phone size."
+      },
+      "headline": "MORTGAGES AT 7.11%",
+      "headline_font_px": 98,
+      "fact_ids": [],
+      "stats": [],
+      "layout": "chart_hero_right_host",
+      "theme": "dark",
+      "chart_n": 1,
+      "host": "host.png",
+      "background": ""
+    },
+    {
+      "n": 2,
+      "id": "thumb_02",
+      "file": "thumbnails/thumb_02.png",
+      "phone_file": "thumbnails/thumb_02_phone.png",
+      "width": 1280,
+      "height": 720,
+      "preset": "",
+      "created": "2026-11-17T04:47:13",
+      "phone": {
+        "width": 168,
+        "height": 94,
+        "title": "Mortgage Rates Are Now 7.11%. Here's Why",
+        "channel": "",
+        "headline_px": 13.3,
+        "legible": true,
+        "note": "Headline letters are about 13.3 px tall at phone size."
+      },
+      "headline": "WHAT IT COSTS YOU",
+      "headline_font_px": 102,
+      "fact_ids": [
+        "F1"
+      ],
+      "stats": [
+        {
+          "id": "F1",
+          "value": "7.11%",
+          "label": "30-YEAR FIXED MORTGAGE RATE",
+          "as_of": "Nov 12, 2026"
+        }
+      ],
+      "layout": "big_stat_badge",
+      "theme": "crimson_alert",
+      "chart_n": 1,
+      "host": "host.png",
+      "background": ""
+    }
+  ],
+  "graphics": [
+    {
+      "n": 1,
+      "id": "g01",
+      "type": "highlight",
+      "title": "30-year mortgage rate vs 10-year Treasury yield: Highest point on this chart",
+      "files": {
+        "1920x1080": "graphics/g01_highlight_chart1_1920x1080.png",
+        "1080x1920": "graphics/g01_highlight_chart1_1080x1920.png"
+      },
+      "format": "png",
+      "fact_ids": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "chart_n": 1,
+      "sources": [
+        {
+          "name": "30-year fixed mortgage rate - FRED (Freddie Mac)",
+          "url": "https://fred.stlouisfed.org/series/MORTGAGE30US"
+        },
+        {
+          "name": "10-year Treasury yield - FRED (Federal Reserve Board, H.15)",
+          "url": "https://fred.stlouisfed.org/series/DGS10"
+        }
+      ],
+      "params": {
+        "when": "peak",
+        "label": "Highest point on this chart",
+        "date": "2023-10-26",
+        "value": 7.79,
+        "value_text": "7.79%",
+        "series_index": 0
+      },
+      "note": "",
+      "stale": false,
+      "created": "2026-11-17T04:47:18"
+    },
+    {
+      "n": 2,
+      "id": "g02",
+      "type": "comparison",
+      "title": "Side by side",
+      "files": {
+        "1920x1080": "graphics/g02_comparison_1920x1080.png",
+        "1080x1920": "graphics/g02_comparison_1080x1920.png"
+      },
+      "format": "png",
+      "fact_ids": [
+        "F1",
+        "F2"
+      ],
+      "chart_n": null,
+      "sources": [
+        {
+          "name": "FRED (Freddie Mac)",
+          "url": "https://fred.stlouisfed.org/series/MORTGAGE30US"
+        }
+      ],
+      "params": {
+        "panels": [
+          {
+            "label": "30-year fixed mortgage rate",
+            "value": "7.11%",
+            "when": "As of Nov 12, 2026"
+          },
+          {
+            "label": "30-year fixed mortgage rate (change in a year)",
+            "value": "up 0.89 percentage points in a year",
+            "when": "As of Nov 12, 2026"
+          }
+        ],
+        "fact_ids": [
+          "F1",
+          "F2"
+        ]
+      },
+      "note": "",
+      "stale": false,
+      "created": "2026-11-17T04:47:19"
+    },
+    {
+      "n": 3,
+      "id": "g03",
+      "type": "flow",
+      "title": "How it connects",
+      "files": {
+        "1920x1080": "graphics/g03_flow_1920x1080.png",
+        "1080x1920": "graphics/g03_flow_1080x1920.png"
+      },
+      "format": "png",
+      "fact_ids": [
+        "F4",
+        "F1"
+      ],
+      "chart_n": null,
+      "sources": [
+        {
+          "name": "FRED (Federal Reserve Board, H.15)",
+          "url": "https://fred.stlouisfed.org/series/DGS10"
+        },
+        {
+          "name": "FRED (Freddie Mac)",
+          "url": "https://fred.stlouisfed.org/series/MORTGAGE30US"
+        }
+      ],
+      "params": {
+        "steps": [
+          "10-Year Yield 5.15%",
+          "30-Year Mortgage 7.11%",
+          "Household payment impact"
+        ],
+        "raw_steps": [
+          "10-Year Yield {F4}",
+          "30-Year Mortgage {F1}",
+          "Household payment impact"
+        ]
+      },
+      "note": "",
+      "stale": false,
+      "created": "2026-11-17T04:47:20"
+    },
+    {
+      "n": 4,
+      "id": "g04",
+      "type": "reveal",
+      "title": "30-year mortgage rate vs 10-year Treasury yield: line reveal",
+      "files": {
+        "1920x1080": "graphics/g04_reveal_chart1_1920x1080.mp4",
+        "1080x1920": "graphics/g04_reveal_chart1_1080x1920.mp4"
+      },
+      "format": "mp4",
+      "fact_ids": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "chart_n": 1,
+      "sources": [
+        {
+          "name": "30-year fixed mortgage rate - FRED (Freddie Mac)",
+          "url": "https://fred.stlouisfed.org/series/MORTGAGE30US"
+        },
+        {
+          "name": "10-year Treasury yield - FRED (Federal Reserve Board, H.15)",
+          "url": "https://fred.stlouisfed.org/series/DGS10"
+        }
+      ],
+      "params": {
+        "seconds": 5.0
+      },
+      "note": "",
+      "stale": false,
+      "created": "2026-11-17T04:47:25"
+    }
+  ],
   "clips": {
     "clips": [
       {
@@ -1368,5 +2123,24 @@
     "transcript_seconds": 130,
     "segments": 15,
     "file": "sample.srt"
+  },
+  "spoken_check": {
+    "checked": 2,
+    "matched": 1,
+    "unverified": 0,
+    "rounded": 1,
+    "flags": [
+      {
+        "seconds": 0.0,
+        "time": "0:00",
+        "spoken": "seven percent",
+        "text": "Mortgage rates just went back above seven percent. And here's the weird part: the Fed didn't do it.",
+        "status": "rounded",
+        "fact_id": "F1",
+        "fact_value": "7.11%",
+        "note": "Looks like a rounded 7.11% (F1). Fine if you said “about”."
+      }
+    ],
+    "summary": "2 spoken number(s) checked: 1 match the fact sheet exactly, 1 look rounded, 0 are not on the fact sheet."
   }
 }

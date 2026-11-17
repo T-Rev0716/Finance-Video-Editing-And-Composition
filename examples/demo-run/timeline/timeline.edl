@@ -1,0 +1,11 @@
+TITLE: Mortgage rates back above 7% as the 10-year Treasury yield t
+FCM: NON-DROP FRAME
+
+001  AX       AA/V  C        00:00:00:00 00:00:00:20 00:00:00:00 00:00:00:20
+* FROM CLIP NAME: Hook (0-15 s)
+002  AX       AA/V  C        00:00:01:05 00:00:01:20 00:00:00:20 00:00:01:05
+* FROM CLIP NAME: Here's what happened (explain it like I'm 12)
+003  AX       AA/V  C        00:00:01:20 00:00:02:02 00:00:01:05 00:00:01:17
+* FROM CLIP NAME: Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not the Fed's rate directly.
+
+* SKIPPED TAKE: Here's what happened (explain it like I'm 12) at 00:00:00:20 (flagged: needs another take)

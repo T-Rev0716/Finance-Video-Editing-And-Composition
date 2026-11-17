@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.9">
+  <resources>
+    <format id="r1" name="FFVideoFormat1080p30" frameDuration="1/30s" width="1920" height="1080"/>
+    <asset id="r2" name="recording" start="0s" duration="62/30s" hasVideo="1" hasAudio="1" format="r1">
+      <media-rep kind="original-media" src="file:///recording.mp4"/>
+    </asset>
+  </resources>
+  <library>
+    <event name="Mortgage rates back above 7% as the 10-year Treasury yield tops 5%">
+      <project name="Mortgage rates back above 7% as the 10-year Treasury yield tops 5%">
+        <sequence format="r1" duration="47/30s" tcStart="0s" tcFormat="NDF">
+          <spine>
+            <asset-clip ref="r2" name="Hook (0-15 s)" offset="0/30s" start="0/30s" duration="20/30s">
+              <marker start="0/30s" duration="1/30s" value="Hook (0-15 s)"/>
+            </asset-clip>
+            <asset-clip ref="r2" name="Here's what happened (explain it like I'm 12)" offset="20/30s" start="35/30s" duration="15/30s">
+              <marker start="35/30s" duration="1/30s" value="Here's what happened (explain it like I'm 12)"/>
+            </asset-clip>
+            <asset-clip ref="r2" name="Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not" offset="35/30s" start="50/30s" duration="12/30s">
+              <marker start="50/30s" duration="1/30s" value="Why it happened 1: Mortgage rates tend to follow the 10-year Treasury yield, not"/>
+            </asset-clip>
+          </spine>
+        </sequence>
+      </project>
+    </event>
+  </library>
+</fcpxml>

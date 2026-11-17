@@ -4,5 +4,12 @@ python-multipart>=0.0.9
 python-dotenv>=1.0
 requests>=2.31
 matplotlib>=3.8
+numpy>=1.26
+pillow>=10.0
 anthropic>=1.0
 pytest>=8.0
+
+# Optional, for transcribing recordings on this computer (GPU if you have one):
+#   pip install faster-whisper
+# Optional tools (not Python packages): ffmpeg for .mp4 animations, dead-air cuts and 9:16 shorts;
+# Ollama for free local wording. The app works without any of them.

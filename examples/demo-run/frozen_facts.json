@@ -1,0 +1,482 @@
+{
+  "frozen_at": "2026-11-17T04:47:26",
+  "reason": "manual",
+  "facts": [
+    {
+      "key": "MORTGAGE30US.latest",
+      "claim": "The average 30-year fixed mortgage rate was 7.11% as of Nov 12, 2026.",
+      "value": "7.11%",
+      "as_of": "Nov 12, 2026",
+      "source_name": "FRED (Freddie Mac)",
+      "source_url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "status": "primary",
+      "note": "",
+      "series_id": "MORTGAGE30US",
+      "trend": "",
+      "group": "Chart 1: 30-year mortgage rate vs 10-year Treasury yield",
+      "id": "F1"
+    },
+    {
+      "key": "MORTGAGE30US.year",
+      "claim": "That is up 0.89 percentage points from a year earlier, when it was 6.22% (Nov 6, 2025).",
+      "value": "up 0.89 percentage points in a year",
+      "as_of": "Nov 12, 2026",
+      "source_name": "FRED (Freddie Mac)",
+      "source_url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "status": "calculated",
+      "note": "",
+      "series_id": "MORTGAGE30US",
+      "trend": "up",
+      "group": "Chart 1: 30-year mortgage rate vs 10-year Treasury yield",
+      "id": "F2"
+    },
+    {
+      "key": "MORTGAGE30US.month",
+      "claim": "Over the past month it is down 0.29 percentage points (from 7.40% on Oct 8, 2026).",
+      "value": "down 0.29 percentage points in a month",
+      "as_of": "Nov 12, 2026",
+      "source_name": "FRED (Freddie Mac)",
+      "source_url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "status": "calculated",
+      "note": "",
+      "series_id": "MORTGAGE30US",
+      "trend": "down",
+      "group": "Chart 1: 30-year mortgage rate vs 10-year Treasury yield",
+      "id": "F3"
+    },
+    {
+      "key": "DGS10.latest",
+      "claim": "The 10-year Treasury yield was 5.15% as of Nov 13, 2026.",
+      "value": "5.15%",
+      "as_of": "Nov 13, 2026",
+      "source_name": "FRED (Federal Reserve Board, H.15)",
+      "source_url": "https://fred.stlouisfed.org/series/DGS10",
+      "status": "primary",
+      "note": "",
+      "series_id": "DGS10",
+      "trend": "",
+      "group": "Chart 1: 30-year mortgage rate vs 10-year Treasury yield",
+      "id": "F4"
+    },
+    {
+      "key": "DGS10.year",
+      "claim": "That is up 1.04 percentage points from a year earlier, when it was 4.11% (Nov 13, 2025).",
+      "value": "up 1.04 percentage points in a year",
+      "as_of": "Nov 13, 2026",
+      "source_name": "FRED (Federal Reserve Board, H.15)",
+      "source_url": "https://fred.stlouisfed.org/series/DGS10",
+      "status": "calculated",
+      "note": "",
+      "series_id": "DGS10",
+      "trend": "up",
+      "group": "Chart 1: 30-year mortgage rate vs 10-year Treasury yield",
+      "id": "F5"
+    },
+    {
+      "key": "DGS10.month",
+      "claim": "Over the past month it is down 0.04 percentage points (from 5.19% on Oct 14, 2026).",
+      "value": "down 0.04 percentage points in a month",
+      "as_of": "Nov 13, 2026",
+      "source_name": "FRED (Federal Reserve Board, H.15)",
+      "source_url": "https://fred.stlouisfed.org/series/DGS10",
+      "status": "calculated",
+      "note": "",
+      "series_id": "DGS10",
+      "trend": "down",
+      "group": "Chart 1: 30-year mortgage rate vs 10-year Treasury yield",
+      "id": "F6"
+    },
+    {
+      "key": "MSPUS.latest",
+      "claim": "The median U.S. home sale price was $393,300 as of Q3 2026.",
+      "value": "$393,300",
+      "as_of": "Q3 2026",
+      "source_name": "FRED (U.S. Census Bureau and HUD)",
+      "source_url": "https://fred.stlouisfed.org/series/MSPUS",
+      "status": "primary",
+      "note": "",
+      "series_id": "MSPUS",
+      "trend": "",
+      "group": "Chart 3: Median U.S. home sale price",
+      "id": "F7"
+    },
+    {
+      "key": "MSPUS.year",
+      "claim": "That is down 4.1% from a year earlier, when it was $410,100 (Q3 2025).",
+      "value": "down 4.1% in a year",
+      "as_of": "Q3 2026",
+      "source_name": "FRED (U.S. Census Bureau and HUD)",
+      "source_url": "https://fred.stlouisfed.org/series/MSPUS",
+      "status": "calculated",
+      "note": "",
+      "series_id": "MSPUS",
+      "trend": "down",
+      "group": "Chart 3: Median U.S. home sale price",
+      "id": "F8"
+    },
+    {
+      "key": "MSPUS.record",
+      "claim": "That is the lowest level since Q2 2021.",
+      "value": "lowest since Q2 2021",
+      "as_of": "Q3 2026",
+      "source_name": "FRED (U.S. Census Bureau and HUD)",
+      "source_url": "https://fred.stlouisfed.org/series/MSPUS",
+      "status": "calculated",
+      "note": "",
+      "series_id": "MSPUS",
+      "trend": "lowest",
+      "group": "Chart 3: Median U.S. home sale price",
+      "id": "F9"
+    },
+    {
+      "key": "DGS2.latest",
+      "claim": "The 2-year Treasury yield was 4.88% as of Nov 13, 2026.",
+      "value": "4.88%",
+      "as_of": "Nov 13, 2026",
+      "source_name": "FRED (Federal Reserve Board, H.15)",
+      "source_url": "https://fred.stlouisfed.org/series/DGS2",
+      "status": "primary",
+      "note": "",
+      "series_id": "DGS2",
+      "trend": "",
+      "group": "Chart 5: 10-year vs 2-year Treasury yields",
+      "id": "F10"
+    },
+    {
+      "key": "DGS2.year",
+      "claim": "That is up 1.30 percentage points from a year earlier, when it was 3.58% (Nov 13, 2025).",
+      "value": "up 1.30 percentage points in a year",
+      "as_of": "Nov 13, 2026",
+      "source_name": "FRED (Federal Reserve Board, H.15)",
+      "source_url": "https://fred.stlouisfed.org/series/DGS2",
+      "status": "calculated",
+      "note": "",
+      "series_id": "DGS2",
+      "trend": "up",
+      "group": "Chart 5: 10-year vs 2-year Treasury yields",
+      "id": "F11"
+    },
+    {
+      "key": "DGS2.month",
+      "claim": "Over the past month it is up 0.06 percentage points (from 4.82% on Oct 14, 2026).",
+      "value": "up 0.06 percentage points in a month",
+      "as_of": "Nov 13, 2026",
+      "source_name": "FRED (Federal Reserve Board, H.15)",
+      "source_url": "https://fred.stlouisfed.org/series/DGS2",
+      "status": "calculated",
+      "note": "",
+      "series_id": "DGS2",
+      "trend": "up",
+      "group": "Chart 5: 10-year vs 2-year Treasury yields",
+      "id": "F12"
+    },
+    {
+      "key": "T10Y2Y.latest",
+      "claim": "The gap between the 10-year and 2-year Treasury yields was 0.29 percentage points as of Nov 16, 2026.",
+      "value": "0.29 percentage points",
+      "as_of": "Nov 16, 2026",
+      "source_name": "FRED (Federal Reserve Bank of St. Louis)",
+      "source_url": "https://fred.stlouisfed.org/series/T10Y2Y",
+      "status": "primary",
+      "note": "",
+      "series_id": "T10Y2Y",
+      "trend": "",
+      "group": "Chart 6: Yield curve: 10-year minus 2-year yield",
+      "id": "F13"
+    },
+    {
+      "key": "T10Y2Y.year",
+      "claim": "That is down 0.23 percentage points from a year earlier, when it was 0.52 percentage points (Nov 14, 2025).",
+      "value": "down 0.23 percentage points in a year",
+      "as_of": "Nov 16, 2026",
+      "source_name": "FRED (Federal Reserve Bank of St. Louis)",
+      "source_url": "https://fred.stlouisfed.org/series/T10Y2Y",
+      "status": "calculated",
+      "note": "",
+      "series_id": "T10Y2Y",
+      "trend": "down",
+      "group": "Chart 6: Yield curve: 10-year minus 2-year yield",
+      "id": "F14"
+    },
+    {
+      "key": "T10Y2Y.month",
+      "claim": "Over the past month it is down 0.06 percentage points (from 0.35 percentage points on Oct 16, 2026).",
+      "value": "down 0.06 percentage points in a month",
+      "as_of": "Nov 16, 2026",
+      "source_name": "FRED (Federal Reserve Bank of St. Louis)",
+      "source_url": "https://fred.stlouisfed.org/series/T10Y2Y",
+      "status": "calculated",
+      "note": "",
+      "series_id": "T10Y2Y",
+      "trend": "down",
+      "group": "Chart 6: Yield curve: 10-year minus 2-year yield",
+      "id": "F15"
+    },
+    {
+      "key": "WALLET.mortgage_payment",
+      "claim": "Worked example: a 30-year loan for 80% of the median home price ($393,300 in Q3 2026, so a $314,640 loan) costs about $2,117 a month in principal and interest at 7.11%. That is about $185 a month more than at the rate a year ago (6.22%).",
+      "value": "$2,117 a month",
+      "as_of": "Nov 12, 2026",
+      "source_name": "Calculated from FRED (Freddie Mac) and FRED (U.S. Census Bureau and HUD)",
+      "source_url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "status": "calculated",
+      "note": "Illustration only: excludes taxes, insurance and fees. Inputs: https://fred.stlouisfed.org/series/MSPUS",
+      "series_id": "MORTGAGE30US",
+      "trend": "up",
+      "group": "Your wallet",
+      "id": "F16"
+    },
+    {
+      "key": "UNRATE.latest",
+      "claim": "The unemployment rate was 4.1% as of October 2026.",
+      "value": "4.1%",
+      "as_of": "October 2026",
+      "source_name": "FRED (U.S. Bureau of Labor Statistics)",
+      "source_url": "https://fred.stlouisfed.org/series/UNRATE",
+      "status": "primary",
+      "note": "",
+      "series_id": "UNRATE",
+      "trend": "",
+      "group": "Your wallet",
+      "id": "F17"
+    },
+    {
+      "key": "UNRATE.year",
+      "claim": "That is down 0.3 percentage points from September 2025, when it was 4.4% (the closest reading to a year earlier; October 2025 was never published).",
+      "value": "down 0.3 percentage points since September 2025",
+      "as_of": "October 2026",
+      "source_name": "FRED (U.S. Bureau of Labor Statistics)",
+      "source_url": "https://fred.stlouisfed.org/series/UNRATE",
+      "status": "calculated",
+      "note": "",
+      "series_id": "UNRATE",
+      "trend": "down",
+      "group": "Your wallet",
+      "id": "F18"
+    },
+    {
+      "key": "CUSR0000SAF11.yoy_missing",
+      "claim": "No 12-month change can be computed for grocery prices (CPI food at home) in October 2026: the same month a year earlier was never published.",
+      "value": "",
+      "as_of": "October 2026",
+      "source_name": "FRED (U.S. Bureau of Labor Statistics)",
+      "source_url": "https://fred.stlouisfed.org/series/CUSR0000SAF11",
+      "status": "primary",
+      "note": "Left blank on purpose - no estimate is made. The figures below use the latest month that can be compared.",
+      "series_id": "CUSR0000SAF11",
+      "trend": "",
+      "group": "Your wallet",
+      "id": "F19"
+    },
+    {
+      "key": "CUSR0000SAF11.yoy",
+      "claim": "Grocery prices (CPI food at home) rose 1.8% over the 12 months ending September 2026.",
+      "value": "1.8%",
+      "as_of": "September 2026",
+      "source_name": "FRED (U.S. Bureau of Labor Statistics)",
+      "source_url": "https://fred.stlouisfed.org/series/CUSR0000SAF11",
+      "status": "calculated",
+      "note": "",
+      "series_id": "CUSR0000SAF11",
+      "trend": "up",
+      "group": "Your wallet",
+      "id": "F20"
+    },
+    {
+      "key": "CUSR0000SAF11.yoy_prev",
+      "claim": "That is slower than the 2.1% pace in August 2026.",
+      "value": "2.1%",
+      "as_of": "August 2026",
+      "source_name": "FRED (U.S. Bureau of Labor Statistics)",
+      "source_url": "https://fred.stlouisfed.org/series/CUSR0000SAF11",
+      "status": "calculated",
+      "note": "",
+      "series_id": "CUSR0000SAF11",
+      "trend": "down",
+      "group": "Your wallet",
+      "id": "F21"
+    },
+    {
+      "key": "CUSR0000SAF11.yoy_peak",
+      "claim": "The peak in the last 6 years was 13.6% in August 2022.",
+      "value": "13.6%",
+      "as_of": "August 2022",
+      "source_name": "FRED (U.S. Bureau of Labor Statistics)",
+      "source_url": "https://fred.stlouisfed.org/series/CUSR0000SAF11",
+      "status": "calculated",
+      "note": "",
+      "series_id": "CUSR0000SAF11",
+      "trend": "",
+      "group": "Your wallet",
+      "id": "F22"
+    },
+    {
+      "key": "SP500.latest",
+      "claim": "The S&P 500 was 7,417 as of Nov 16, 2026.",
+      "value": "7,417",
+      "as_of": "Nov 16, 2026",
+      "source_name": "FRED (S&P Dow Jones Indices)",
+      "source_url": "https://fred.stlouisfed.org/series/SP500",
+      "status": "primary",
+      "note": "",
+      "series_id": "SP500",
+      "trend": "",
+      "group": "Your wallet",
+      "id": "F23"
+    },
+    {
+      "key": "SP500.year",
+      "claim": "That is up 11.2% from a year earlier, when it was 6,672 (Nov 17, 2025).",
+      "value": "up 11.2% in a year",
+      "as_of": "Nov 16, 2026",
+      "source_name": "FRED (S&P Dow Jones Indices)",
+      "source_url": "https://fred.stlouisfed.org/series/SP500",
+      "status": "calculated",
+      "note": "",
+      "series_id": "SP500",
+      "trend": "up",
+      "group": "Your wallet",
+      "id": "F24"
+    },
+    {
+      "key": "SP500.month",
+      "claim": "Over the past month it is down 3.2% (from 7,659 on Oct 16, 2026).",
+      "value": "down 3.2% in a month",
+      "as_of": "Nov 16, 2026",
+      "source_name": "FRED (S&P Dow Jones Indices)",
+      "source_url": "https://fred.stlouisfed.org/series/SP500",
+      "status": "calculated",
+      "note": "",
+      "series_id": "SP500",
+      "trend": "down",
+      "group": "Your wallet",
+      "id": "F25"
+    },
+    {
+      "key": "NEWS.1",
+      "claim": "Reported: “Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026”",
+      "value": "",
+      "as_of": "",
+      "source_name": "The Mortgage Reports",
+      "source_url": "https://themortgagereports.com/mortgage-rates-now/mortgage-rates-today-november-3-2026",
+      "status": "verify",
+      "note": "Contains a number that comes only from a news article. Verify it against a primary source before saying it on camera.",
+      "series_id": "",
+      "trend": "",
+      "group": "News coverage (verify before use)",
+      "id": "F26"
+    },
+    {
+      "key": "NEWS.2",
+      "claim": "Reported: “Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month”",
+      "value": "",
+      "as_of": "",
+      "source_name": "Mortgage Professional America",
+      "source_url": "https://www.mpamag.com/us/mortgage-industry/market-updates/midterm-elections-extend-mortgage-rate-slide-to-three-weeks/596355",
+      "status": "verify",
+      "note": "News report, not a primary source. Verify before repeating it as fact.",
+      "series_id": "",
+      "trend": "",
+      "group": "News coverage (verify before use)",
+      "id": "F27"
+    },
+    {
+      "key": "NEWS.3",
+      "claim": "Reported: “Mortgage rates continue quick retreat”",
+      "value": "",
+      "as_of": "",
+      "source_name": "Bankrate via FOX19",
+      "source_url": "https://www.fox19.com/bankrate-article/2026/11/04/mortgage-rates-continue-quick-retreat/",
+      "status": "verify",
+      "note": "News report, not a primary source. Verify before repeating it as fact.",
+      "series_id": "",
+      "trend": "",
+      "group": "News coverage (verify before use)",
+      "id": "F28"
+    }
+  ],
+  "series": {
+    "CUSR0000SAF11": {
+      "observations": 321,
+      "last_date": "2026-10-01",
+      "last_value": "322.535"
+    },
+    "DGS10": {
+      "observations": 6720,
+      "last_date": "2026-11-13",
+      "last_value": "5.15"
+    },
+    "DGS2": {
+      "observations": 6720,
+      "last_date": "2026-11-13",
+      "last_value": "4.88"
+    },
+    "MORTGAGE30US": {
+      "observations": 1402,
+      "last_date": "2026-11-12",
+      "last_value": "7.11"
+    },
+    "MSPUS": {
+      "observations": 107,
+      "last_date": "2026-07-01",
+      "last_value": "393300.0"
+    },
+    "SP500": {
+      "observations": 251,
+      "last_date": "2026-11-16",
+      "last_value": "7416.59"
+    },
+    "T10Y2Y": {
+      "observations": 6721,
+      "last_date": "2026-11-16",
+      "last_value": "0.29"
+    },
+    "UNRATE": {
+      "observations": 321,
+      "last_date": "2026-10-01",
+      "last_value": "4.1"
+    },
+    "USREC": {
+      "observations": 322,
+      "last_date": "2026-10-01",
+      "last_value": "0.0"
+    }
+  },
+  "charts": [
+    {
+      "n": 1,
+      "id": "mortgage_vs_10y",
+      "data_through": "Nov 13, 2026"
+    },
+    {
+      "n": 2,
+      "id": "mortgage_long",
+      "data_through": "Nov 12, 2026"
+    },
+    {
+      "n": 3,
+      "id": "home_prices",
+      "data_through": "Q3 2026"
+    },
+    {
+      "n": 4,
+      "id": "ten_year_long",
+      "data_through": "Nov 13, 2026"
+    },
+    {
+      "n": 5,
+      "id": "yields_10_2",
+      "data_through": "Nov 13, 2026"
+    },
+    {
+      "n": 6,
+      "id": "curve",
+      "data_through": "Nov 16, 2026"
+    }
+  ],
+  "headlines": [
+    "Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026",
+    "Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month",
+    "Mortgage rates continue quick retreat"
+  ]
+}

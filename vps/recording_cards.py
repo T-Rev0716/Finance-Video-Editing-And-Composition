@@ -270,7 +270,7 @@ def view(state: dict, project: dict) -> dict:
         pinned = []
         for fact_id in list(dict.fromkeys(card["fact_ids"] + _FACT_REF.findall(card["text"]))):
             fact = facts.get(fact_id)
-            if fact:
+            if fact and fact.get("value"):  # headlines have a source but no number to pin
                 pinned.append({k: fact.get(k, "") for k in ("id", "value", "claim", "as_of", "source_name", "source_url", "status")})
         visuals = []
         for v in card.get("visuals", []):

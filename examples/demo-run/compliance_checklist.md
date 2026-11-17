@@ -17,7 +17,7 @@ Education and commentary only. Not personal investment advice.
 
 - [ ] On camera, I did not tell anyone to buy, sell or hold anything.
 - [ ] On camera, I gave no price targets and made no promises about returns.
-- [x] I said the "education only, not investment advice" disclaimer out loud.
+- [ ] I said the "education only, not investment advice" disclaimer out loud.
 - [ ] Every number I quoted from a news article was checked against a primary source.
 - [ ] Every AI-generated clip has an on-screen "Illustrative" label in the edit.
 - [ ] If any AI visual could be mistaken for real, I turned on YouTube's "altered or synthetic content" setting.
