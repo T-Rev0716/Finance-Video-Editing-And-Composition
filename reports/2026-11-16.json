@@ -1,0 +1,55 @@
+{
+  "_note": "SAMPLE REPORT. Built by hand from web searches on 2026-11-16 so the app has something to show before your own script's output is dropped into this folder. Headlines and links are real; scores are placeholders; competitor view counts were not available, so views are null.",
+  "date": "2026-11-16",
+  "themes": [
+    {
+      "theme": "Mortgage rates back above 7% as the 10-year Treasury yield tops 5%",
+      "score": 92,
+      "open_lane": true,
+      "headlines": [
+        {"title": "Mortgage Rates Ease in Weekly Survey Ahead of JOLTS | Today, November 3, 2026", "link": "https://themortgagereports.com/mortgage-rates-now/mortgage-rates-today-november-3-2026", "source": "The Mortgage Reports"},
+        {"title": "Post-election bond market calm and easing Treasury yields pull borrowing costs to their lowest level in a month", "link": "https://www.mpamag.com/us/mortgage-industry/market-updates/midterm-elections-extend-mortgage-rate-slide-to-three-weeks/596355", "source": "Mortgage Professional America"},
+        {"title": "Mortgage rates continue quick retreat", "link": "https://www.fox19.com/bankrate-article/2026/11/04/mortgage-rates-continue-quick-retreat/", "source": "Bankrate via FOX19"}
+      ],
+      "search_trends": ["mortgage rates today", "10 year treasury yield", "why are mortgage rates going up"],
+      "competitor_videos": [
+        {"title": "Mortgage Rates Are Back Over 7%...What Comes Next?", "channel": "", "views": null, "url": "https://m.youtube.com/watch?v=rHmFmHGb7-Q"},
+        {"title": "The Fed Didn't RAISE Rates. So Why Did Your Mortgage Rate Jump?", "channel": "", "views": null, "url": "https://www.youtube.com/watch?v=07L9lw51Ns0"},
+        {"title": "How mortgage rates are reacting to a surging 10-year yield", "channel": "", "views": null, "url": "https://www.youtube.com/watch?v=gUK6G7bT-Ug"}
+      ]
+    },
+    {
+      "theme": "Fed weighs a December rate hike as oil stays high and inflation heats up",
+      "score": 88,
+      "open_lane": false,
+      "headlines": [
+        {"title": "Federal Reserve likely to skip rate hike despite elevated inflation", "link": "https://www.koreatimes.co.kr/world/20261029/federal-reserve-likely-to-skip-rate-hike-despite-elevated-inflation", "source": "AP via The Korea Times"},
+        {"title": "As US Fed Holds Steady, Oil Spike Has 2026 Rate Cut Expectations Shrinking Fast", "link": "https://global.morningstar.com/en-gb/economy/us-fed-holds-steady-oil-spike-has-2026-rate-cut-expectations-shrinking-fast", "source": "Morningstar"},
+        {"title": "Fed likely to wait on another rate hike as inflation pressures mount", "link": "https://okcfox.com/news/nation-world/federal-reserve-likely-to-wait-on-another-rate-hike-as-inflation-pressures-mount-economy-energy-shock-iran-war-bond-yields-kevin-warsh", "source": "KOKH"}
+      ],
+      "search_trends": ["fed meeting december 2026", "will the fed raise rates", "oil prices"],
+      "competitor_videos": [
+        {"title": "The Fed Doesn't Set Your Mortgage Rate (Here's What Does)", "channel": "", "views": null, "url": "https://www.youtube.com/watch?v=CSXcr1zduJ0"}
+      ]
+    },
+    {
+      "theme": "AI data center spending: is Big Tech's build-out paying off?",
+      "score": 71,
+      "open_lane": true,
+      "headlines": [
+        {"title": "Jensen Huang: hyperscaler AI investment 'really misunderstood'", "link": "https://www.thestack.technology/jensen-huang-hyperscaler-ai-investment-really-misunderstood/", "source": "The Stack"},
+        {"title": "NVIDIA Q3 FY 2026: Record Data Center Revenue, Higher Q4 Guide", "link": "https://futurumgroup.com/insights/nvidia-q3-fy-2026-record-data-center-revenue-higher-q4-guide/", "source": "Futurum Group"}
+      ],
+      "search_trends": ["ai bubble", "nvidia earnings", "data center spending"],
+      "competitor_videos": []
+    }
+  ],
+  "tickers": ["NVDA", "MSFT", "GOOGL", "AMZN"],
+  "emerging": ["rate hike", "term premium", "energy shock"],
+  "competitor_outliers": [
+    {"title": "Treasury Yields Just Hit 5.2%…Here's Why It Matters", "channel": "", "views": null, "url": "https://www.youtube.com/shorts/bto9WiFbkjY"},
+    {"title": "Mortgage Rates Are Back Over 7%...What Comes Next?", "channel": "", "views": null, "url": "https://m.youtube.com/watch?v=rHmFmHGb7-Q"},
+    {"title": "The Fed Didn't RAISE Rates. So Why Did Your Mortgage Rate Jump?", "channel": "", "views": null, "url": "https://www.youtube.com/watch?v=07L9lw51Ns0"},
+    {"title": "What Are Bond Yields? Why Did the 10 Year Treasury Yield Hit Its Highest Level in Decades?", "channel": "", "views": null, "url": "https://www.youtube.com/watch?v=T5MVVGT-BjQ"}
+  ]
+}
