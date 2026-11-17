@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from . import compliance, wording
+from . import catalog, compliance, wording
 from .numbers import REMOVED
 from .voice import BROLL_SAFETY_SUFFIX, ILLUSTRATIVE_LABEL
 
@@ -179,7 +179,8 @@ def build_description(topic: str, summary: str, data: dict, cited: list[str], sh
             sources.setdefault(series["source_url"], f"{series['title']} - {series['source_name']}")
     for fact in data["facts"]:
         if fact["id"] in cited and fact["status"] != "verify" and fact.get("source_url"):
-            sources.setdefault(fact["source_url"], fact["source_name"])
+            title = catalog.SERIES.get(fact.get("series_id", ""), {}).get("title")
+            sources.setdefault(fact["source_url"], f"{title} - {fact['source_name']}" if title else fact["source_name"])
     lines.append("SOURCES AND DATA")
     lines += [f"- {label}: {url}" for url, label in sources.items()]
     lines.append("All charts in this video are drawn from the public data linked above.")

@@ -38,12 +38,12 @@ SERIES: dict[str, dict] = {
     "CES0500000003": {"title": "Average hourly earnings (private sector)", "noun": "average hourly earnings", "units": "usd", "org": "U.S. Bureau of Labor Statistics", "freq": "monthly", "decimals": 2, "per": "per hour"},
     # --- Growth and consumers
     "A191RL1Q225SBEA": {"title": "Real GDP growth (quarterly, annualized)", "noun": "real GDP growth (annualized)", "units": "percent", "org": "U.S. Bureau of Economic Analysis", "freq": "quarterly", "decimals": 1},
-    "UMCSENT": {"title": "Consumer sentiment (University of Michigan)", "noun": "consumer sentiment", "units": "index", "org": "University of Michigan", "freq": "monthly", "decimals": 1},
+    "UMCSENT": {"title": "Consumer sentiment (University of Michigan)", "noun": "the University of Michigan consumer sentiment index", "units": "index", "org": "University of Michigan", "freq": "monthly", "decimals": 1},
     "PSAVERT": {"title": "Personal saving rate", "noun": "the personal saving rate", "units": "percent", "org": "U.S. Bureau of Economic Analysis", "freq": "monthly", "decimals": 1},
     "DRCCLACBS": {"title": "Credit card delinquency rate", "noun": "the credit card delinquency rate", "units": "percent", "org": "Federal Reserve Board", "freq": "quarterly", "decimals": 2},
     # --- Housing
     "MSPUS": {"title": "Median U.S. home sale price", "noun": "the median U.S. home sale price", "units": "usd", "org": "U.S. Census Bureau and HUD", "freq": "quarterly", "decimals": 0},
-    "CSUSHPINSA": {"title": "U.S. home prices (Case-Shiller index)", "noun": "U.S. home prices (Case-Shiller)", "units": "index", "org": "S&P Dow Jones Indices", "freq": "monthly", "decimals": 1},
+    "CSUSHPINSA": {"title": "U.S. home prices (Case-Shiller index)", "noun": "the Case-Shiller U.S. home price index", "units": "index", "org": "S&P Dow Jones Indices", "freq": "monthly", "decimals": 1},
     # --- Markets
     "SP500": {"title": "S&P 500", "noun": "the S&P 500", "units": "index", "org": "S&P Dow Jones Indices", "freq": "daily", "decimals": 0},
     "NASDAQCOM": {"title": "Nasdaq Composite", "noun": "the Nasdaq Composite", "units": "index", "org": "Nasdaq", "freq": "daily", "decimals": 0},
@@ -58,7 +58,7 @@ SERIES: dict[str, dict] = {
     "A091RC1Q027SBEA": {"title": "Federal interest payments (annual rate)", "noun": "federal government interest payments (annual rate)", "units": "usd_billions", "org": "U.S. Bureau of Economic Analysis", "freq": "quarterly", "decimals": 0},
     "WALCL": {"title": "Federal Reserve balance sheet (total assets)", "noun": "the Federal Reserve's balance sheet", "units": "usd_millions", "org": "Federal Reserve Board, H.4.1", "freq": "weekly", "decimals": 0},
     # --- AI and tech
-    "IPG3344S": {"title": "U.S. semiconductor production index", "noun": "U.S. semiconductor production", "units": "index", "org": "Federal Reserve Board, G.17", "freq": "monthly", "decimals": 1},
+    "IPG3344S": {"title": "U.S. semiconductor production index", "noun": "the U.S. semiconductor production index", "units": "index", "org": "Federal Reserve Board, G.17", "freq": "monthly", "decimals": 1},
     # --- Helper
     "USREC": {"title": "U.S. recession periods", "noun": "recession periods", "units": "flag", "org": "NBER", "freq": "monthly", "decimals": 0},
 }
@@ -168,11 +168,11 @@ CATEGORIES: dict[str, dict] = {
     "stocks": {
         "label": "The Stock Market", "plural": False, "lead_series": "SP500",
         "keywords": ["stock market", "stocks", "s&p", "s&p 500", "nasdaq", "dow", "rally", "crash", "correction", "selloff", "sell-off", "bubble", "401k", "401(k)", "wall street", "bear market", "bull market", "all-time high", "record high"],
-        "charts": ["sp500", "stocks_indexed", "vix", "ten_year_long"],
+        "charts": ["sp500", "nasdaq", "stocks_indexed", "vix", "ten_year_long"],
         "releases": ["fomc", "cpi", "jobs", "earnings"],
     },
     "ai": {
-        "label": "The AI Boom", "plural": False, "lead_series": "NASDAQCOM",
+        "label": "The AI Boom", "plural": False, "lead_series": "MSFT_CAPITAL_SPENDING",
         "keywords": ["ai", "artificial intelligence", "nvidia", "chip", "chips", "semiconductor", "semiconductors", "data center", "data centers", "openai", "anthropic", "hyperscaler", "hyperscalers", "gpu", "big tech", "tech stocks", "capex"],
         "charts": ["ai_capex", "nasdaq", "ticker_revenue", "chips", "electricity", "stocks_indexed"],
         "releases": ["earnings", "fomc"],

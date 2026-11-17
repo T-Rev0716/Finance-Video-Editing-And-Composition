@@ -13,8 +13,23 @@ def _bullet(text: str, *fact_ids: str) -> dict:
     return {"text": text, "facts": [f for f in fact_ids if f]}
 
 
-def _fact_bullet(fact: dict, suffix: str = "") -> dict:
-    return _bullet(f"{fact['claim']}{(' ' + suffix) if suffix else ''}", fact["id"])
+_STANDS_ALONE = (".latest", ".yoy", ".change", ".since_start", "WALLET.mortgage_payment", ".yoy_missing")
+
+
+def _fact_bullet(fact: dict, suffix: str = "", after: dict | None = None) -> dict:
+    """A fact as a bullet. Follow-on facts ("That is up...") name their series unless the
+    bullet right before them (`after`) is about the same series."""
+    text = fact["claim"]
+    follows_on = not fact["key"].endswith(_STANDS_ALONE) and not fact["key"].startswith("NEWS.")
+    if follows_on and (after is None or after.get("series_id") != fact.get("series_id")):
+        name = catalog.SERIES.get(fact.get("series_id", ""), {}).get("title") or fact.get("series_id", "")
+        if name:
+            text = f"{name}: {text[0].lower()}{text[1:]}"
+    return _bullet(f"{text}{(' ' + suffix) if suffix else ''}", fact["id"])
+
+
+def _fact_bullets(facts: list[dict]) -> list[dict]:
+    return [_fact_bullet(fact, after=facts[i - 1] if i else None) for i, fact in enumerate(facts)]
 
 
 def lead_facts(brief: dict) -> dict[str, dict]:
@@ -83,7 +98,7 @@ def template_titles(brief: dict, lead: dict[str, dict]) -> list[str]:
                   f"{metric} {is_are} {rising}. Here's What Changes for You"]
     ideas += [
         f"{label} Explained Like You're 12",
-        f"{label}: What Changes for Your Mortgage and 401(k)",
+        f"{label}: What Changes for Your Budget and 401(k)",
         f"The {n_charts} That Explain {label} Right Now",
         f"What Nobody Tells You About {label}",
         f"{label}: What Just Happened and Why It Matters",
@@ -122,9 +137,9 @@ def template_wording(brief: dict) -> dict:
     if lead.get("latest"):
         hook.append(_fact_bullet(lead["latest"], chart_tag))
     if lead.get("record"):
-        hook.append(_fact_bullet(lead["record"]))
+        hook.append(_fact_bullet(lead["record"], after=lead.get("latest")))
     elif lead.get("year"):
-        hook.append(_fact_bullet(lead["year"]))
+        hook.append(_fact_bullet(lead["year"], after=lead.get("latest")))
     hook.append(_bullet(f"Ask the camera: {voice['question']}"))
 
     happened = [_bullet(f"Plain English: {voice['plain']}")]
@@ -138,12 +153,23 @@ def template_wording(brief: dict) -> dict:
 
     used: set[str] = {f for b in hook + happened for f in b["facts"]}
 
-    causes = []
-    others = [c for c in brief["charts"] if c["n"] != lead_chart] or brief["charts"]
-    for chart in others[:3]:
-        fresh = [by_id[i] for i in chart.get("fact_ids", []) if i in by_id and i not in used and by_id[i].get("value")][:2]
+    # Causes: the charts that still have something new to say, richest first, in chart order.
+    def fresh_facts(chart: dict) -> list[dict]:
+        return [by_id[i] for i in chart.get("fact_ids", []) if i in by_id and i not in used and by_id[i].get("value")]
+
+    # Pick one at a time, so two charts of the same series don't both claim the same facts.
+    picked: list[tuple[dict, list[dict]]] = []
+    remaining = list(brief["charts"])
+    while remaining and len(picked) < 3:
+        chart = max(remaining, key=lambda c: (min(len(fresh_facts(c)), 2), -c["n"]))
+        fresh = fresh_facts(chart)[:2]
         used.update(f["id"] for f in fresh)
-        bullets = [_fact_bullet(f) for f in fresh]
+        picked.append((chart, fresh))
+        remaining.remove(chart)
+
+    causes = []
+    for chart, fresh in sorted(picked, key=lambda pair: pair[0]["n"]):
+        bullets = _fact_bullets(fresh)
         bullets.append(_bullet(f"Walk through the chart: point at where the line turns and say what was going on. [CHART {chart['n']}]"))
         causes.append({"cause": chart.get("teaches") or chart["title"], "chart": chart["n"], "bullets": bullets})
 
@@ -157,7 +183,7 @@ def template_wording(brief: dict) -> dict:
         example = [f for f in facts if f["key"] == "WALLET.mortgage_payment"]
         # Lead with the level, then whatever has not been said yet, then the worked example.
         rest = [f for f in facts[1:] if f["id"] not in used and f not in example][:1]
-        bullets = [_fact_bullet(f) for f in [facts[0]] + rest + example]
+        bullets = _fact_bullets([facts[0]] + rest + example)
         bullets.append(_bullet(WALLET_LINES[angle]))
         wallet[angle] = bullets
 

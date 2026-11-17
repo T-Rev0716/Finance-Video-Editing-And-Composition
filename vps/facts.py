@@ -44,11 +44,12 @@ def _record_fact(series: Series, meta: dict) -> dict | None:
             if years >= 2:
                 return _fact(f"{series.id}.record",
                              f"That is the {word} reading in the data fetched, which goes back to {since}.",
-                             f"{word} since at least {since}", fmt.fmt_date(latest_date, freq), series, trend=word)
+                             f"{word} since at least {since}", fmt.fmt_date(latest_date, freq), series,
+                             status="calculated", trend=word)
         elif (latest_date - previous).days >= 365:
             when = fmt.fmt_date(previous, freq)
             return _fact(f"{series.id}.record", f"That is the {word} level since {when}.",
-                         f"{word} since {when}", fmt.fmt_date(latest_date, freq), series, trend=word)
+                         f"{word} since {when}", fmt.fmt_date(latest_date, freq), series, status="calculated", trend=word)
     return None
 
 
@@ -61,22 +62,33 @@ def level_facts(series: Series, meta: dict) -> list[dict]:
     as_of = fmt.fmt_date(latest_date, freq)
     facts = [_fact(f"{series.id}.latest", f"{noun[0].upper()}{noun[1:]} was {value} as of {as_of}.", value, as_of, series)]
 
-    year_ago = series.value_on_or_before(years_before(latest_date, 1))
+    target = years_before(latest_date, 1)
+    year_ago = series.value_on_or_before(target)
+    if year_ago is None and 0 < (series.dates[0] - target).days <= 10:
+        year_ago = (series.dates[0], series.values[0])  # the source's history starts a few days short of a year
     if year_ago and (latest_date - year_ago[0]).days <= 400:
         old_date, old = year_ago
         diff = latest - old
         trend = fmt.direction(diff, 10 ** -(decimals + 1))
         old_text = fmt.fmt_value(old, units, decimals, per)
+        old_when = fmt.fmt_date(old_date, freq)
+        # Monthly and quarterly data: if the same period a year ago was never published,
+        # say which period we compared with instead of calling it "a year earlier".
+        exact = freq not in ("monthly", "quarterly") or old_date == target
+        since = f"from a year earlier, when it was {old_text} ({old_when})" if exact else (
+            f"from {old_when}, when it was {old_text} (the closest reading to a year earlier; "
+            f"{fmt.fmt_date(target, freq)} was never published)")
+        span = "in a year" if exact else f"since {old_when}"
         if trend == "flat":
-            claim, short = f"That is unchanged from a year earlier ({old_text} on {fmt.fmt_date(old_date, freq)}).", "unchanged from a year ago"
+            claim = (f"That is unchanged from a year earlier ({old_text} on {old_when})." if exact
+                     else f"That is unchanged from {old_when} ({old_text}), the closest reading to a year earlier.")
+            short = "unchanged from a year ago" if exact else f"unchanged since {old_when}"
         elif units in ("percent", "percentage_points"):
             size = fmt.fmt_change(diff, "percent", decimals)
-            claim = f"That is {_UP[trend]} {size} from a year earlier, when it was {old_text} ({fmt.fmt_date(old_date, freq)})."
-            short = f"{_UP[trend]} {size} in a year"
+            claim, short = f"That is {_UP[trend]} {size} {since}.", f"{_UP[trend]} {size} {span}"
         else:
             pct = fmt.fmt_pct(abs(diff / old * 100)) if old else ""
-            claim = f"That is {_UP[trend]} {pct} from a year earlier, when it was {old_text} ({fmt.fmt_date(old_date, freq)})."
-            short = f"{_UP[trend]} {pct} in a year"
+            claim, short = f"That is {_UP[trend]} {pct} {since}.", f"{_UP[trend]} {pct} {span}"
         facts.append(_fact(f"{series.id}.year", claim, short, as_of, series, status="calculated", trend=trend))
 
     if freq in ("daily", "weekly"):
@@ -202,7 +214,7 @@ def edgar_facts(series: Series, ticker: str, label: str) -> list[dict]:
 
 def filing_facts(ticker: str, company_name: str, filings: list[dict]) -> list[dict]:
     return [{
-        "key": f"{ticker}.filing.{i}", "claim": f"{company_name} filed a {f['form']} with the SEC on {f['filed']}"
+        "key": f"{ticker}.filing.{i}", "claim": f"{company_name} filed a Form {f['form']} with the SEC on {f['filed']}"
         + (f" (period ending {f['period']})." if f.get("period") else "."),
         "value": f["form"], "as_of": f["filed"], "source_name": "SEC EDGAR", "source_url": f["url"],
         "status": "primary", "note": "Read the filing itself for the numbers.", "series_id": "", "trend": "",

@@ -42,6 +42,14 @@ Then:
 
 Generating takes roughly 30-60 seconds without an LLM key and a couple of minutes with one.
 
+## See a real run first
+
+`examples/demo-run/` is an actual package generated on 2026-11-17 from live FRED data for the
+topic "Mortgage rates back above 7% as the 10-year Treasury yield tops 5%": six charts in
+both sizes, a 28-item fact sheet, outline, shot list, titles, description, compliance
+checklist and a clip plan. It was made **without** an LLM key, so the wording is the built-in
+templates. `examples/screenshots/` shows the app during that run.
+
 ## Keys (all optional)
 
 Open **Settings** in the app and paste keys there. They are written to a `.env` file next to
@@ -163,6 +171,8 @@ full pipeline and the web API.
 
 ## Good to know
 
+- **S&P 500 history:** FRED currently serves only about one year of S&P 500 closes, so the
+  S&P chart covers a year. The Nasdaq Composite chart goes back further.
 - **Gold:** FRED no longer carries a daily gold price. The gold chart uses the BLS export
   price index for gold, which is labelled as an index, not a dollar price.
 - **Fed meeting dates** come from `data/fomc_meetings.json`, which holds the 2026 calendar.

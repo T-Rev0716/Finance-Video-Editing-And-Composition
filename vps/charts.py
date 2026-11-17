@@ -121,12 +121,20 @@ def _subtitle(chart: dict) -> str:
 
 
 def _credit(chart: dict) -> str:
+    """One source line for the corner of the chart. Repeated publishers are merged."""
     names = list(dict.fromkeys(s.source_name for s in chart["series"]))
-    # "FRED (A); FRED (B)" reads better as "FRED (A; B)"
-    fred = [n[6:-1] for n in names if n.startswith("FRED (") and n.endswith(")")]
-    other = [n for n in names if not (n.startswith("FRED (") and n.endswith(")"))]
-    credits = ([f"FRED ({'; '.join(fred)})"] if fred else []) + other
-    return "Source: " + "; ".join(credits)
+    fred, edgar, other = [], [], []
+    for name in names:
+        if name.startswith("FRED (") and name.endswith(")"):
+            fred.append(name[6:-1])  # "FRED (A)" + "FRED (B)" reads better as "FRED (A; B)"
+        elif name.startswith("SEC EDGAR, "):
+            edgar.append(name[11:].split(" ")[0])  # the ticker
+        else:
+            other.append(name)
+    credits = [f"FRED ({'; '.join(fred)})"] if fred else []
+    if edgar:
+        credits.append(f"SEC EDGAR, annual 10-K filings ({', '.join(edgar)})")
+    return "Source: " + "; ".join(credits + other)
 
 
 def _spread_labels(positions: list[float], min_gap: float) -> list[float]:
@@ -267,7 +275,7 @@ def _draw(chart: dict, size_name: str, theme_name: str, path: Path) -> None:
         fig.text(L["x"], L["foot_y"], "\n".join(lines), color=T["muted"], fontsize=L["foot_size"],
                  va="top", ha="left", linespacing=1.5)
     else:
-        fig.text(L["x"], L["foot_y"], textwrap.shorten(credit, 118, placeholder="..."), color=T["muted"],
+        fig.text(L["x"], L["foot_y"], textwrap.shorten(credit, 96, placeholder="..."), color=T["muted"],
                  fontsize=L["foot_size"], va="center", ha="left")
         fig.text(0.95, L["foot_y"], through, color=T["muted"], fontsize=L["foot_size"], va="center", ha="right")
 
